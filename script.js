@@ -1,5 +1,6 @@
 'use strict';
 
+
 function setTheme(theme) {
     if (theme === "light") {
         console.log("heads up! turning on the lights");
@@ -8,46 +9,35 @@ function setTheme(theme) {
         console.log("lights out! switching to dark");
         document.documentElement.removeAttribute("data-theme");
     }
+    localStorage.setItem("theme", theme)
 }
 
+
 document.addEventListener("DOMContentLoaded", function () {
-    const savedTheme = localStorage.getItem("theme");
+    // get the system theme
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    let theme;
+    // set the system theme
+    setTheme(mediaQuery.matches ? 'dark' : 'light');
 
-    if (savedTheme) {
-        theme = savedTheme;
-    } else {
-        theme = mediaQuery.matches ? 'dark' : 'light';
-        localStorage.setItem("theme", theme)
-    }
-
-    setTheme(theme);
-
-    // Listen for system theme changes
+    // listen for system theme changes
     mediaQuery.addEventListener('change', (e) => {
         setTheme(e.matches ? 'dark' : 'light');
     });
 
+    // detect button
     let themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) {
         console.error("Theme toggle button not found!");
-        return; // Exit if button doesn't exist
+        // return; // Exit if button doesn't exist <— I don't think I should exit...
     }
 
+    // connect button
     themeToggle.addEventListener("click", function () {
         let currentTheme = document.documentElement.getAttribute("data-theme");
-        // if (currentTheme === "light") {
-        //     localStorage.setItem("theme", "dark");
-        // } else {
-        //     localStorage.setItem("theme", "light");
-        // }
-        localStorage.setItem("theme", currentTheme == "light" ? "dark" : "light")
-        setTheme(currentTheme)
-
-        console.log("Current data-theme:", document.documentElement.getAttribute("data-theme"));
+        setTheme(currentTheme == "light" ? "dark" : "light")
     });
+
 
     // // language change // 
     // let currentLang = localStorage.getItem("lang") || "en";
