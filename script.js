@@ -1,24 +1,34 @@
 'use strict';
 
-//Changing the language
+function setTheme(theme) {
+    if (theme === "light") {
+        console.log("heads up! turning on the lights");
+        document.documentElement.setAttribute("data-theme", theme);
+    } else {
+        console.log("lights out! switching to dark");
+        document.documentElement.removeAttribute("data-theme");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Check for a saved theme preference in localStorage
-    let savedTheme = localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem("theme");
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
     let theme;
 
     if (savedTheme) {
         theme = savedTheme;
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // If no saved preference, check the system preference
-        theme = "dark";
     } else {
-        // Fallback default to dark mode
-        theme = "dark";
+        theme = mediaQuery.matches ? 'dark' : 'light';
+        localStorage.setItem("theme", theme)
     }
 
-    // Apply the theme
     setTheme(theme);
 
+    // Listen for system theme changes
+    mediaQuery.addEventListener('change', (e) => {
+        setTheme(e.matches ? 'dark' : 'light');
+    });
 
     let themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) {
@@ -28,24 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     themeToggle.addEventListener("click", function () {
         let currentTheme = document.documentElement.getAttribute("data-theme");
-        if (currentTheme === "light") {
-            console.log("lights out! switching to dark");
-            localStorage.setItem("theme", "dark");
-            document.documentElement.removeAttribute("data-theme");
-        } else {
-            console.log("heads up! turning on the lights");
-            localStorage.setItem("theme", "light");
-            document.documentElement.setAttribute("data-theme", "light");
-        }
-        console.log("switched!");
+        // if (currentTheme === "light") {
+        //     localStorage.setItem("theme", "dark");
+        // } else {
+        //     localStorage.setItem("theme", "light");
+        // }
+        localStorage.setItem("theme", currentTheme == "light" ? "dark" : "light")
+        setTheme(currentTheme)
+
         console.log("Current data-theme:", document.documentElement.getAttribute("data-theme"));
     });
-
-
-    function setTheme(theme) {
-        console.log("setting theme");
-        document.documentElement.setAttribute("data-theme", theme);
-    }
 
     // // language change // 
     // let currentLang = localStorage.getItem("lang") || "en";
