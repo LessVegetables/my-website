@@ -4,17 +4,18 @@
 @import url("./01-base.css");
 @import url("./02-layout.css");
 
-@import url("./components/icon-box.css");
-@import url("./components/sidebar.css");
-@import url("./components/navbar.css");
-@import url("./components/modal.css");
 @import url("./components/cards.css");
+@import url("./components/filter-labels.css");
+@import url("./components/icon-box.css");
+@import url("./components/modal.css");
+@import url("./components/navbar.css");
 @import url("./components/project-cards.css");
+@import url("./components/sidebar.css");
 
 @import url("./sections/about.css");
-@import url("./sections/resume.css");
-@import url("./sections/portfolio.css");
 @import url("./sections/blog.css");
 @import url("./sections/contact.css");
+@import url("./sections/portfolio.css");
+@import url("./sections/resume.css");
 
 @import url("./99-utilities.css");
