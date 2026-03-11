@@ -1,25 +1,17 @@
-var qrcode = new QRCode("qrcode");
+import QRCode from "https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm";
 
-function makeCode() {
-    var elText = document.getElementById("canvas");
+const input = document.getElementById("text");
+const img = document.getElementById("qrImg");
 
-    if (!elText.value) {
-        alert("Input a text");
-        elText.focus();
-        return;
-    }
-
-    qrcode.makeCode(elText.value);
+async function render() {
+    const value = input.value.trim() || " ";
+    img.src = await QRCode.toDataURL(value, {
+        width: 256,
+        margin: 2,
+        errorCorrectionLevel: "M",
+    });
 }
 
-makeCode();
-
-$("#text").
-    on("blur", function () {
-        makeCode();
-    }).
-    on("keydown", function (e) {
-        if (e.keyCode == 13) {
-            makeCode();
-        }
-    });
+input.addEventListener("input", render);
+input.value = "";
+render();
