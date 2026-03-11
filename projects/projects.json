@@ -1,7 +1,7 @@
 {
     "projects": [
         {
-            "id": 1,
+            "id": "chat-tutor",
             "name": {
                 "en": "ChatTutor",
                 "ru": "ChatTutor"
@@ -14,15 +14,21 @@
                 "en": "long_description",
                 "ru": "длинное_описание"
             },
-            "assets": [],
-            "tags": [],
+            "assets": [
+                "assets/images/chat-1.png",
+                "assets/images/chat-2.png"
+            ],
+            "tags": [
+                "tgbots"
+            ],
+            "status": "finished",
             "github-url": "https://github.com/LessVegetables/language-bot"
         },
         {
-            "id": 2,
+            "id": "game-of-life",
             "name": {
-                "en": "project_name",
-                "ru": "название_проекта"
+                "en": "Game Of Life",
+                "ru": "Игра Жизнь"
             },
             "short-description": {
                 "en": "short_description",
@@ -32,15 +38,21 @@
                 "en": "long_description",
                 "ru": "длинное_описание"
             },
-            "assets": [],
-            "tags": [],
-            "github-url": "https://www.github.com/lessvegetables/"
+            "assets": [
+                "assets/images/gof-1.png",
+                "assets/images/gof-2.png"
+            ],
+            "tags": [
+                "desktop"
+            ],
+            "status": "finished",
+            "github-url": "https://github.com/LessVegetables/game-of-life"
         },
         {
-            "id": 3,
+            "id": "umovie",
             "name": {
-                "en": "project_name",
-                "ru": "название_проекта"
+                "en": "uMovie",
+                "ru": "uMovie"
             },
             "short-description": {
                 "en": "short_description",
@@ -50,15 +62,20 @@
                 "en": "long_description",
                 "ru": "длинное_описание"
             },
-            "assets": [],
-            "tags": [],
-            "github-url": "https://www.github.com/lessvegetables/"
+            "assets": [
+                "assets/images/wip.jpg"
+            ],
+            "tags": [
+                "desktop"
+            ],
+            "status": "unfinished",
+            "github-url": "https://github.com/BodgeDook/UPPRPO-Project-NSU"
         },
         {
-            "id": 4,
+            "id": "ulp",
             "name": {
-                "en": "project_name",
-                "ru": "название_проекта"
+                "en": "ULP",
+                "ru": "ULP"
             },
             "short-description": {
                 "en": "short_description",
@@ -68,15 +85,20 @@
                 "en": "long_description",
                 "ru": "длинное_описание"
             },
-            "assets": [],
-            "tags": [],
-            "github-url": "https://www.github.com/lessvegetables/"
+            "assets": [
+                "assets/images/wip.jpg"
+            ],
+            "tags": [
+                "ios"
+            ],
+            "status": "unfinished",
+            "github-url": "https://github.com/Universal-Loyalty-Program"
         },
         {
-            "id": 5,
+            "id": "virtual-shopping",
             "name": {
-                "en": "project_name",
-                "ru": "название_проекта"
+                "en": "Virtual Shopping",
+                "ru": "Виртуальный Шопинг"
             },
             "short-description": {
                 "en": "short_description",
@@ -86,9 +108,14 @@
                 "en": "long_description",
                 "ru": "длинное_описание"
             },
-            "assets": [],
-            "tags": [],
-            "github-url": "https://www.github.com/lessvegetables/"
+            "assets": [
+                "assets/images/wip.jpg"
+            ],
+            "tags": [
+                "desktop"
+            ],
+            "status": "unfinished",
+            "github-url": "https://github.com/LessVegetables/ml"
         }
     ]
 }

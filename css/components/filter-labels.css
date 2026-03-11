@@ -1,0 +1,150 @@
+:root {
+    --desktop: #d64949;
+    --ios: #ba7e2f;
+    --tgbots: #5c548a;
+    --python: #6ba5b5;
+}
+
+/* body {
+    padding: 40px;
+} */
+
+form {
+    display: flex;
+    gap: 2ch;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label {
+    --bg-color: #999;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    display: inline-block;
+    outline: 2px solid color-mix(in lab, black 30%, var(--bg-color));
+    padding: 10px;
+    border-radius: 15px;
+    min-width: 7ch;
+    text-align: center;
+    user-select: none;
+
+    &:has([name="desktop"]) {
+        --bg-color: var(--desktop);
+    }
+
+    &:has([name="ios"]) {
+        --bg-color: var(--ios);
+    }
+
+    &:has([name="tgbots"]) {
+        --bg-color: var(--tgbots);
+    }
+
+    &:has([name="react"]) {
+        --bg-color: var(--react);
+    }
+
+
+    background: color-mix(in lab, white 70%, var(--bg-color));
+
+    &:hover {
+        background: color-mix(in lab, white 90%, var(--bg-color));
+    }
+
+    &:has(:checked) {
+        background: color-mix(in lab, black 30%, var(--bg-color));
+        color: color-mix(in lab, white 80%, var(--bg-color));
+
+        &:hover {
+            background: color-mix(in lab, black 10%, var(--bg-color));
+        }
+    }
+}
+
+/* .project-list {
+    margin-block: 30px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+} */
+
+
+
+.project-card {
+    @starting-style {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+}
+
+/* .project-card {
+    outline: 1px solid silver;
+    width: 200px;
+    height: 220px;
+    overflow: clip;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: opacity .5s, width .5s, height .5s, display .35s allow-discrete;
+
+    @starting-style {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    &::before {
+        content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+    }
+} */
+
+/* .project-card>div {
+    &::before {
+        content: var(--text, 'tag');
+        display: inline-block;
+        min-width: 4ch;
+        text-align: center;
+        padding: 3px 8px;
+        border-radius: 5px;
+        background: color-mix(in lab, var(--color), white 70%);
+        outline: 1px solid var(--color);
+        text-transform: uppercase;
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.1ch;
+    }
+} */
+
+.desktop {
+    --text: 'Desktop';
+    --color: var(--desktop);
+}
+
+.tgbots {
+    --text: 'Telegram Bots';
+    --color: var(--tgbots);
+}
+
+.ios {
+    --text: 'iOS';
+    --color: var(--ios);
+}
+
+.react {
+    --text: 'react';
+    --color: var(--react);
+}
+
+.filter-list:has([name="desktop"]:checked)~.project-list .project-card:not(:has(.desktop)),
+.filter-list:has([name="ios"]:checked)~.project-list .project-card:not(:has(.ios)),
+.filter-list:has([name="tgbots"]:checked)~.project-list .project-card:not(:has(.tgbots)),
+.filter-list:has([name="react"]:checked)~.project-list .project-card:not(:has(.react)) {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}

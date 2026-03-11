@@ -39,10 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // // language change // 
-    // let currentLang = localStorage.getItem("lang") || "en";
-    // let translations = {};
-
     // language change // 
     // Check if a language has been saved previously
     let currentLang = localStorage.getItem("lang");
@@ -101,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Load the projects on page load
+    loadProjects(currentLang);
 
     // Load translations on page load
     loadTranslations();
@@ -306,23 +304,40 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
 
 
-// const navigationLinks = document.querySelectorAll('[data-nav-link]');
-// const pages = document.querySelectorAll('[data-page]');
+async function loadProjects(lang = 'en') {
+    const response = await fetch('/projects/projects.json');
+    const data = await response.json();
 
-// const DURATION = 500;
+    const projectList = document.querySelector('.project-list');
+    projectList.innerHTML = ''; // Clear existing cards
 
-// for (let i = 0; i < navigationLinks.length; i++) {
-//     navigationLinks[i].addEventListener('click', function (event) {
-//         event.preventDefault(); // bc of href="#" — prevents from jumping up to the top of the screen
-//         for (let i = 0; i < pages.length; i++) {
-//             if (this.dataset.key == pages[i].dataset.page) {
-//                 pages[i].classList.add('active');
-//                 navigationLinks[i].classList.add('active');
-//                 // window.scrollTo(0, 0);
-//             } else {
-//                 pages[i].classList.remove('active');
-//                 navigationLinks[i].classList.remove('active');
-//             }
-//         }
-//     });
-// }
+    data.projects.forEach(project => {
+        const [primaryTag = ''] = project.tags;
+        const tagDivs = project.tags.map(tag => `<div class="${tag}"></div>`).join('');
+        const tagBadges = project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
+
+
+        const images = project.assets.map(src =>
+            `<img src="${src}" alt="${project.name[lang]}" />`
+        ).join('');
+
+        const card = document.createElement('li');
+        card.className = 'project-card';
+        card.dataset.projectId = project.id;
+        // Add tag class for filtering (e.g. "tgbots", "desktop", "ios")
+        card.innerHTML = `
+            ${tagDivs}
+            <a href="${project['github-url']}" target="_blank" class="project-card-link">
+                <div class="project-card-content">
+                <h3 class="project-title">${project.name[lang]}</h3>
+                <div class="project-tag">${primaryTag}</div>
+                </div>
+                <div class="project-card-image">
+                ${images}
+                </div>
+            </a>
+            `;
+
+        projectList.appendChild(card);
+    });
+}
