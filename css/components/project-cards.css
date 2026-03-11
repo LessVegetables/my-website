@@ -117,8 +117,10 @@
     transform: scale(1.05);
 }
 
+
+/* MOVED TO /projects/projects.json */
 /* Project-specific gradients */
-.project-card[data-project-id="chat-tutor"] {
+/* .project-card[data-project-id="chat-tutor"] {
     background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
 }
 
@@ -140,7 +142,9 @@
     background: linear-gradient(135deg, #3489ce 0%, #fc5f5f 100%);
 }
 
-/* Unfinished: slanted image */
+
 .project-card[data-project-status="unfinished"] .project-card-image {
     transform: translateY(-50%) rotate(-45deg);
 }
+
+*/

@@ -22,7 +22,12 @@
                 "tgbots"
             ],
             "status": "finished",
-            "github-url": "https://github.com/LessVegetables/language-bot"
+            "github-url": "https://github.com/LessVegetables/language-bot",
+            "styles": {
+                "card": "background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);",
+                "image-1": "transform: rotate(-10deg); box-shadow: none;",
+                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
+            }
         },
         {
             "id": "game-of-life",
@@ -46,7 +51,10 @@
                 "desktop"
             ],
             "status": "finished",
-            "github-url": "https://github.com/LessVegetables/game-of-life"
+            "github-url": "https://github.com/LessVegetables/game-of-life",
+            "styles": {
+                "card": "background: linear-gradient(135deg, #3489ce 0%, #fc5f5f 100%);"
+            }
         },
         {
             "id": "umovie",
@@ -69,7 +77,10 @@
                 "desktop"
             ],
             "status": "unfinished",
-            "github-url": "https://github.com/BodgeDook/UPPRPO-Project-NSU"
+            "github-url": "https://github.com/BodgeDook/UPPRPO-Project-NSU",
+            "styles": {
+                "image-container": "transform: translateY(-50%) rotate(-45deg);"
+            }
         },
         {
             "id": "ulp",
@@ -92,7 +103,10 @@
                 "ios"
             ],
             "status": "unfinished",
-            "github-url": "https://github.com/Universal-Loyalty-Program"
+            "github-url": "https://github.com/Universal-Loyalty-Program",
+            "styles": {
+                "image-container": "transform: translateY(-50%) rotate(-45deg);"
+            }
         },
         {
             "id": "virtual-shopping",
@@ -115,7 +129,10 @@
                 "desktop"
             ],
             "status": "unfinished",
-            "github-url": "https://github.com/LessVegetables/ml"
+            "github-url": "https://github.com/LessVegetables/ml",
+            "styles": {
+                "image-container": "transform: translateY(-50%) rotate(-45deg);"
+            }
         }
     ]
 }

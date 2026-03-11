@@ -147,39 +147,43 @@ sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); }
 // modalCloseBtn.addEventListener('click', testimonialsModalFunc);
 // overlay.addEventListener('click', testimonialsModalFunc);
 
+
+// beginning of old filtering // ##################################################
 //Activating Filter Select and filtering options
 
-const select = document.querySelector('[data-select]');
-const selectItems = document.querySelectorAll('[data-select-item]');
-const selectValue = document.querySelector('[data-select-value]');
-const filterBtn = document.querySelectorAll('[data-filter-btn]');
+// const select = document.querySelector('[data-select]');
+// const selectItems = document.querySelectorAll('[data-select-item]');
+// const selectValue = document.querySelector('[data-select-value]');
+// const filterBtn = document.querySelectorAll('[data-filter-btn]');
 
-select.addEventListener('click', function () { elementToggleFunc(this); });
+// select.addEventListener('click', function () { elementToggleFunc(this); });
 
-for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].addEventListener('click', function () {
+// for (let i = 0; i < selectItems.length; i++) {
+//     selectItems[i].addEventListener('click', function () {
 
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        elementToggleFunc(select);
-        filterFunc(selectedValue);
+//         let selectedValue = this.innerText.toLowerCase();
+//         selectValue.innerText = this.innerText;
+//         elementToggleFunc(select);
+//         filterFunc(selectedValue);
 
-    });
-}
+//     });
+// }
 
-const filterItems = document.querySelectorAll('[data-filter-item]');
+// const filterItems = document.querySelectorAll('[data-filter-item]');
 
-const filterFunc = function (selectedValue) {
-    for (let i = 0; i < filterItems.length; i++) {
-        if (selectedValue == "all") {
-            filterItems[i].classList.add('active');
-        } else if (selectedValue == filterItems[i].dataset.category) {
-            filterItems[i].classList.add('active');
-        } else {
-            filterItems[i].classList.remove('active');
-        }
-    }
-}
+// const filterFunc = function (selectedValue) {
+//     for (let i = 0; i < filterItems.length; i++) {
+//         if (selectedValue == "all") {
+//             filterItems[i].classList.add('active');
+//         } else if (selectedValue == filterItems[i].dataset.category) {
+//             filterItems[i].classList.add('active');
+//         } else {
+//             filterItems[i].classList.remove('active');
+//         }
+//     }
+// }
+
+// ending of old filtering // ##################################################
 
 // const filterFunc = function (selectedValue) {
 //     const activeCards = document.querySelectorAll('[data-filter-item].active');
@@ -212,25 +216,28 @@ const filterFunc = function (selectedValue) {
 //     }, 500); // Delay matches swingOut duration
 // };
 
+// beginning of old filtering // ##################################################
 
 //Enabling filter button for smaller screens 
 
-let lastClickedBtn = filterBtn[0];
+// let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
+// for (let i = 0; i < filterBtn.length; i++) {
 
-    filterBtn[i].addEventListener('click', function () {
+//     filterBtn[i].addEventListener('click', function () {
 
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        filterFunc(selectedValue);
+//         let selectedValue = this.innerText.toLowerCase();
+//         selectValue.innerText = this.innerText;
+//         filterFunc(selectedValue);
 
-        lastClickedBtn.classList.remove('active');
-        this.classList.add('active');
-        lastClickedBtn = this;
+//         lastClickedBtn.classList.remove('active');
+//         this.classList.add('active');
+//         lastClickedBtn = this;
 
-    })
-}
+//     })
+// }
+
+// ending of old filtering // ##################################################
 
 // Enabling Contact Form
 
@@ -324,19 +331,36 @@ async function loadProjects(lang = 'en') {
         const card = document.createElement('li');
         card.className = 'project-card';
         card.dataset.projectId = project.id;
-        // Add tag class for filtering (e.g. "tgbots", "desktop", "ios")
+
+        if (project.status === 'unfinished') card.dataset.projectStatus = 'unfinished';
+
         card.innerHTML = `
             ${tagDivs}
             <a href="${project['github-url']}" target="_blank" class="project-card-link">
                 <div class="project-card-content">
-                <h3 class="project-title">${project.name[lang]}</h3>
-                <div class="project-tag">${primaryTag}</div>
+                    <h3 class="project-title">${project.name[lang]}</h3>
+                    <div class="project-tag">${primaryTag}</div>
                 </div>
                 <div class="project-card-image">
-                ${images}
+                    ${images}
                 </div>
             </a>
-            `;
+        `;
+
+        // Apply card-level style
+        if (project.styles?.card) card.style.cssText = project.styles.card;
+        if (project.styles?.['image-container']) {
+            card.querySelector('.project-card-image').style.cssText = project.styles['image-container'];
+        }
+
+        // Apply per-image styles after innerHTML is set
+        if (project.styles) {
+            const imageEls = card.querySelectorAll('.project-card-image img');
+            imageEls.forEach((img, i) => {
+                const key = `image-${i + 1}`;
+                if (project.styles[key]) img.style.cssText = project.styles[key];
+            });
+        }
 
         projectList.appendChild(card);
     });
