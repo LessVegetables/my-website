@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If no saved language, auto-detect from the browser
     if (!currentLang) {
-        // Detect the user's language (e.g., "en-US", "ru-RU")
+        // Detect the user's language ("en-US", "ru-RU")
         const defaultLang = navigator.languages ? navigator.languages[0] : navigator.language;
         // Normalize (e.g., "en-US" becomes "en")
         let langCode = defaultLang.split('-')[0];
