@@ -316,6 +316,30 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 
+const TAG_LABELS = {
+    desktop: "Desktop",
+    ios: "iOS",
+    web: "Web",
+    tgbots: "Telegram Bot",
+
+    python: "Python",
+    swift: "Swift",
+    javascript: "JS",
+    c: "C",
+
+    frontend: "Frontend",
+    backend: "Backend",
+    fullstack: "Fullstack",
+    ml: "ML",
+
+    utility: "Utility",
+    app: "App",
+    service: "Service",
+
+    wip: "Work In Progress",
+    demo: "Demo",
+    done: "80% Done"
+};
 
 async function loadProjects(lang = 'en') {
     const response = await fetch('/projects/projects.json');
@@ -325,7 +349,15 @@ async function loadProjects(lang = 'en') {
     projectList.innerHTML = ''; // Clear existing cards
 
     data.projects.forEach(project => {
-        const [primaryTag = ''] = project.tags;
+        const primaryTag = project.tags[0];
+        const primaryLabel = primaryTag && TAG_LABELS[primaryTag];
+
+        // multiple tags:
+        // project.tags
+        //     .filter(tag => TAG_LABELS[tag])
+        //     .map(tag => `<div class="project-tag">${TAG_LABELS[tag]}</div>`)
+        //     .join('')
+
         const tagDivs = project.tags.map(tag => `<div class="${tag}"></div>`).join('');
         const tagBadges = project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
 
@@ -345,7 +377,7 @@ async function loadProjects(lang = 'en') {
             <a href="${project['github-url']}" target="_blank" class="project-card-link">
                 <div class="project-card-content">
                     <h3 class="project-title">${project.name[lang]}</h3>
-                    ${primaryTag ? `<div class="project-tag">${primaryTag}</div>` : ''}
+                    ${primaryLabel ? `<div class="project-tag">${primaryLabel}</div>` : ''}
                 </div>
                 <div class="project-card-image">
                     ${images}

@@ -103,7 +103,7 @@ label {
         --bg-color: var(--fullstack);
     }
 
-    Scope &:has([name="utility"]) {
+    &:has([name="utility"]) {
         --bg-color: var(--utility);
     }
 
@@ -153,6 +153,10 @@ label {
     border-radius: 9999px;
     color: #fff;
     z-index: 10;
+
+    &:has([name="utility"]) {
+        content: "Utility";
+    }
 }
 
 .tag-platform {
@@ -167,7 +171,10 @@ label {
     background: color-mix(in lab, black 10%, var(--architecture));
 }
 
-/* .tag-scope     { background: color-mix(in lab, black 10%, var(--scope));        } */
+.tag-scope {
+    background: color-mix(in lab, black 10%, var(--scope));
+}
+
 .tag-state {
     background: color-mix(in lab, black 10%, var(--state));
     color: #1a1a1a;
