@@ -6,28 +6,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>QR Generator</title>
     <link rel="stylesheet" href="qr_code_styles.css">
+    <script type="module" src="qr_code_script.js"></script>
+    <script type="module" src="language_script.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
     <script defer src="https://cloud.umami.is/script.js"
         data-website-id="c402e13d-03fd-44e1-8f98-5f343520c35a"></script>
 </head>
 
 <body>
-    <h1>QR Code Generator</h1>
+    <h1 data-key="title">QR Code Generator</h1>
 
     <div class="wrap">
-        <input id="text" placeholder="Type the thing to turn into a QR code here" autocomplete="off" />
+        <input id="text" data-key="input_placeholder" data-attr="placeholder"
+            placeholder="Type the thing to turn into a QR code here" autocomplete="off" />
         <img id="qrImg" alt="QR code" width="256" height="256" />
-        <p class="hint">Right-click / long-press to save</p>
+        <p class="hint" data-key="hint">Right-click / long-press to save</p>
     </div>
-
-
-    <!-- QRCode library (UMD build exposes a global "QRCode") -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script> -->
-    <!-- <script type="module"> import qrcode from 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm' </script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script> -->
-
-    <script type="module" src="qr_code_script.js"></script>
-    </script>
 </body>
 
 </html>
