@@ -21,9 +21,9 @@
     --ml: #2d6b3e;
 
     /* Scope
-    --scope:        #888;
-    --utility:      #888;
-    --app:          #999;
+    --scope:        #888; */
+    --utility: #528759;
+    /* --app:          #999;
     --service:      #777;
     */
 
@@ -206,7 +206,7 @@ label {
 .filter-list:has([name="frontend"]:checked)~.project-list .project-card:not(:has(.frontend)),
 .filter-list:has([name="backend"]:checked)~.project-list .project-card:not(:has(.backend)),
 .filter-list:has([name="fullstack"]:checked)~.project-list .project-card:not(:has(.fullstack)),
-/* .filter-list:has([name="utility"]:checked) ~ .project-list .project-card:not(:has(.utility)), */
+.filter-list:has([name="utility"]:checked)~.project-list .project-card:not(:has(.utility)),
 .filter-list:has([name="wip"]:checked)~.project-list .project-card:not(:has(.wip)),
 .filter-list:has([name="demo"]:checked)~.project-list .project-card:not(:has(.demo)),
 .filter-list:has([name="done"]:checked)~.project-list .project-card:not(:has(.done)) {

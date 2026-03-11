@@ -63,6 +63,37 @@
             }
         },
         {
+            "id": "qr",
+            "name": {
+                "en": "QR Generator",
+                "ru": "QR Генератор"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/qr.webp"
+            ],
+            "tags": [
+                "utility",
+                "web",
+                "tgbots",
+                "javascript",
+                "frontend"
+            ],
+            "status": "finished",
+            "github-url": "https://www.d.gehrman.me/qr/",
+            "styles": {
+                "card": "background: linear-gradient(145deg, #3489ce 0%, #c2eaff 100%);",
+                "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-4deg); box-shadow: none;"
+            }
+        },
+        {
             "id": "ulp",
             "name": {
                 "en": "ULP",
