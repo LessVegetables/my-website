@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "QR Code Generator",
+        "ru": "Генератор QR Кодов"
+    },
+    "input-placeholder": {
+        "en": "Type the thing to turn into a QR code here",
+        "ru": "Печатайте то что вы хотите превратить в QR код сюда"
+    },
+    "hint": {
+        "en": "Right-click / long-press to save",
+        "ru": "Правый-клик / длинное-нажатие чтобы сохранить"
+    }
+}
