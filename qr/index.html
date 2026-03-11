@@ -46,6 +46,7 @@
             input {
                 background: #222222;
                 border: #555;
+                color: #f5f5f5;
             }
 
             .hint {
@@ -77,29 +78,9 @@
     <!-- QRCode library (UMD build exposes a global "QRCode") -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script> -->
     <!-- <script type="module"> import qrcode from 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm' </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/lib/browser.min.js"></script> -->
 
-
-    <script type="module">
-        import QRCode from "https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm";
-
-        const input = document.getElementById("text");
-        const canvas = document.getElementById("qr");
-
-        const img = document.getElementById("qrImg");
-
-        async function render() {
-            const value = input.value.trim() || " ";
-            img.src = await QRCode.toDataURL(value, {
-                width: 256,
-                margin: 2,
-                errorCorrectionLevel: "M",
-            });
-        }
-
-        input.addEventListener("input", render);
-        input.value = "";
-        render();
+    <script type="module" src="qr_code_script.js"></script>
     </script>
 </body>
 
