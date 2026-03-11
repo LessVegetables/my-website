@@ -1,5 +1,5 @@
-- split up the index.html
-- match the language and light/dark mode of the main site
-- connect the two sites [dependent on the main website getting the logic update]
-- add "advanced" section(the generation settings/resolution)
-- add option to have the url autofill all the fields (input, settins, etc) [partially dependent on me fixing the dns routing]
+- [x] split up the index.html
+- [x] match the language and light/dark mode of the main site
+- [x] connect the two sites [dependent on the main website getting the logic update]
+- [ ] add "advanced" section(the generation settings/resolution)
+- [ ] add option to have the url autofill all the fields (input, settins, etc) [partially dependent on me fixing the dns routing]
