@@ -19,7 +19,10 @@
                 "assets/images/chat-2.png"
             ],
             "tags": [
-                "tgbots"
+                "",
+                "tgbots",
+                "python",
+                "backend"
             ],
             "status": "finished",
             "github-url": "https://github.com/LessVegetables/language-bot",
@@ -48,38 +51,15 @@
                 "assets/images/gof-2.png"
             ],
             "tags": [
-                "desktop"
+                "",
+                "desktop",
+                "c",
+                "frontend"
             ],
             "status": "finished",
             "github-url": "https://github.com/LessVegetables/game-of-life",
             "styles": {
                 "card": "background: linear-gradient(135deg, #3489ce 0%, #fc5f5f 100%);"
-            }
-        },
-        {
-            "id": "umovie",
-            "name": {
-                "en": "uMovie",
-                "ru": "uMovie"
-            },
-            "short-description": {
-                "en": "short_description",
-                "ru": "короткое_описание"
-            },
-            "long-description": {
-                "en": "long_description",
-                "ru": "длинное_описание"
-            },
-            "assets": [
-                "assets/images/wip.jpg"
-            ],
-            "tags": [
-                "desktop"
-            ],
-            "status": "unfinished",
-            "github-url": "https://github.com/BodgeDook/UPPRPO-Project-NSU",
-            "styles": {
-                "image-container": "transform: translateY(-50%) rotate(-45deg);"
             }
         },
         {
@@ -100,7 +80,11 @@
                 "assets/images/wip.jpg"
             ],
             "tags": [
-                "ios"
+                "",
+                "python",
+                "service",
+                "swift",
+                "wip"
             ],
             "status": "unfinished",
             "github-url": "https://github.com/Universal-Loyalty-Program",

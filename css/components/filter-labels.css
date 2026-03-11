@@ -1,17 +1,43 @@
 :root {
-    --desktop: #d64949;
-    --ios: #ba7e2f;
-    --tgbots: #5c548a;
-    --python: #6ba5b5;
-}
+    /* Platform — purple */
+    --platform: #5c548a;
+    --desktop: #5c548a;
+    --ios: #7b6fa8;
+    --web: #8b7fc4;
+    --tgbots: #4a6da8;
 
-/* body {
-    padding: 40px;
-} */
+    /* Language — orange */
+    --language: #c97b2f;
+    --python: #c97b2f;
+    --swift: #d4813a;
+    --javascript: #c8a020;
+    --c: #b06020;
+
+    /* Architecture — green */
+    --architecture: #4a8a5c;
+    --frontend: #4a8a5c;
+    --backend: #3a7a4c;
+    --fullstack: #2d6b3e;
+    --ml: #2d6b3e;
+
+    /* Scope
+    --scope:        #888;
+    --utility:      #888;
+    --app:          #999;
+    --service:      #777;
+    */
+
+    /* State — yellow-green */
+    --state: #7ab030;
+    --wip: #a0a020;
+    --demo: #7ab030;
+    --done: #5a9020;
+}
 
 form {
     display: flex;
     gap: 2ch;
+    flex-wrap: wrap;
 }
 
 input[type="checkbox"] {
@@ -30,6 +56,7 @@ label {
     text-align: center;
     user-select: none;
 
+    /* Platform */
     &:has([name="desktop"]) {
         --bg-color: var(--desktop);
     }
@@ -38,14 +65,69 @@ label {
         --bg-color: var(--ios);
     }
 
+    &:has([name="web"]) {
+        --bg-color: var(--web);
+    }
+
     &:has([name="tgbots"]) {
         --bg-color: var(--tgbots);
     }
 
-    &:has([name="react"]) {
-        --bg-color: var(--react);
+    /* Language */
+    &:has([name="python"]) {
+        --bg-color: var(--python);
     }
 
+    &:has([name="swift"]) {
+        --bg-color: var(--swift);
+    }
+
+    &:has([name="javascript"]) {
+        --bg-color: var(--javascript);
+    }
+
+    &:has([name="c"]) {
+        --bg-color: var(--c);
+    }
+
+    /* Architecture */
+    &:has([name="frontend"]) {
+        --bg-color: var(--frontend);
+    }
+
+    &:has([name="backend"]) {
+        --bg-color: var(--backend);
+    }
+
+    &:has([name="fullstack"]) {
+        --bg-color: var(--fullstack);
+    }
+
+    Scope &:has([name="utility"]) {
+        --bg-color: var(--utility);
+    }
+
+    &:has([name="app"]) {
+        --bg-color: var(--app);
+    }
+
+    &:has([name="service"]) {
+        --bg-color: var(--service);
+    }
+
+
+    /* State */
+    &:has([name="wip"]) {
+        --bg-color: var(--wip);
+    }
+
+    &:has([name="demo"]) {
+        --bg-color: var(--demo);
+    }
+
+    &:has([name="done"]) {
+        --bg-color: var(--done);
+    }
 
     background: color-mix(in lab, white 70%, var(--bg-color));
 
@@ -63,14 +145,73 @@ label {
     }
 }
 
-/* .project-list {
-    margin-block: 30px;
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-} */
+/* Card tag badges */
+.project-tag {
+    align-self: flex-start;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 9999px;
+    color: #fff;
+    z-index: 10;
+}
 
+.tag-platform {
+    background: color-mix(in lab, black 10%, var(--platform));
+}
 
+.tag-language {
+    background: color-mix(in lab, black 10%, var(--language));
+}
+
+.tag-architecture {
+    background: color-mix(in lab, black 10%, var(--architecture));
+}
+
+/* .tag-scope     { background: color-mix(in lab, black 10%, var(--scope));        } */
+.tag-state {
+    background: color-mix(in lab, black 10%, var(--state));
+    color: #1a1a1a;
+}
+
+/* Hidden div markers on cards (used for filtering) */
+.desktop,
+.ios,
+.web,
+.tgbots,
+.python,
+.swift,
+.javascript,
+.c,
+.frontend,
+.backend,
+.fullstack,
+.utility,
+.app,
+.service,
+.wip,
+.demo,
+.done {
+    display: none;
+}
+
+/* Filter logic — hide cards that don't match any checked filter */
+.filter-list:has([name="desktop"]:checked)~.project-list .project-card:not(:has(.desktop)),
+.filter-list:has([name="ios"]:checked)~.project-list .project-card:not(:has(.ios)),
+.filter-list:has([name="web"]:checked)~.project-list .project-card:not(:has(.web)),
+.filter-list:has([name="tgbots"]:checked)~.project-list .project-card:not(:has(.tgbots)),
+.filter-list:has([name="python"]:checked)~.project-list .project-card:not(:has(.python)),
+.filter-list:has([name="swift"]:checked)~.project-list .project-card:not(:has(.swift)),
+.filter-list:has([name="javascript"]:checked)~.project-list .project-card:not(:has(.javascript)),
+.filter-list:has([name="c"]:checked)~.project-list .project-card:not(:has(.c)),
+.filter-list:has([name="frontend"]:checked)~.project-list .project-card:not(:has(.frontend)),
+.filter-list:has([name="backend"]:checked)~.project-list .project-card:not(:has(.backend)),
+.filter-list:has([name="fullstack"]:checked)~.project-list .project-card:not(:has(.fullstack)),
+/* .filter-list:has([name="utility"]:checked) ~ .project-list .project-card:not(:has(.utility)), */
+.filter-list:has([name="wip"]:checked)~.project-list .project-card:not(:has(.wip)),
+.filter-list:has([name="demo"]:checked)~.project-list .project-card:not(:has(.demo)),
+.filter-list:has([name="done"]:checked)~.project-list .project-card:not(:has(.done)) {
+    display: none;
+}
 
 .project-card {
     @starting-style {
@@ -78,73 +219,4 @@ label {
         height: 0px;
         opacity: 0;
     }
-}
-
-/* .project-card {
-    outline: 1px solid silver;
-    width: 200px;
-    height: 220px;
-    overflow: clip;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    transition: opacity .5s, width .5s, height .5s, display .35s allow-discrete;
-
-    @starting-style {
-        width: 0px;
-        height: 0px;
-        opacity: 0;
-    }
-
-    &::before {
-        content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-    }
-} */
-
-/* .project-card>div {
-    &::before {
-        content: var(--text, 'tag');
-        display: inline-block;
-        min-width: 4ch;
-        text-align: center;
-        padding: 3px 8px;
-        border-radius: 5px;
-        background: color-mix(in lab, var(--color), white 70%);
-        outline: 1px solid var(--color);
-        text-transform: uppercase;
-        font-family: sans-serif;
-        font-size: 0.8rem;
-        letter-spacing: 0.1ch;
-    }
-} */
-
-.desktop {
-    --text: 'Desktop';
-    --color: var(--desktop);
-}
-
-.tgbots {
-    --text: 'Telegram Bots';
-    --color: var(--tgbots);
-}
-
-.ios {
-    --text: 'iOS';
-    --color: var(--ios);
-}
-
-.react {
-    --text: 'react';
-    --color: var(--react);
-}
-
-.filter-list:has([name="desktop"]:checked)~.project-list .project-card:not(:has(.desktop)),
-.filter-list:has([name="ios"]:checked)~.project-list .project-card:not(:has(.ios)),
-.filter-list:has([name="tgbots"]:checked)~.project-list .project-card:not(:has(.tgbots)),
-.filter-list:has([name="react"]:checked)~.project-list .project-card:not(:has(.react)) {
-    display: none;
-    opacity: 0;
-    width: 0;
-    height: 0;
 }

@@ -345,7 +345,7 @@ async function loadProjects(lang = 'en') {
             <a href="${project['github-url']}" target="_blank" class="project-card-link">
                 <div class="project-card-content">
                     <h3 class="project-title">${project.name[lang]}</h3>
-                    <div class="project-tag">${primaryTag}</div>
+                    ${primaryTag ? `<div class="project-tag">${primaryTag}</div>` : ''}
                 </div>
                 <div class="project-card-image">
                     ${images}

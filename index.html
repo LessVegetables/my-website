@@ -168,165 +168,31 @@
                     </header>
 
                     <section class="projects">
-                        <ul class="filter-list">
-                            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
-                            <li class="filter-item"><button data-filter-btn>Telegram Bots</button></li>
-                            <li class="filter-item"><button data-filter-btn>Desktop</button></li>
-                            <li class="filter-item"><button data-filter-btn>Mobile</button></li>
-                            <li class="filter-item"><button data-filter-btn>ML</button></li>
-                        </ul>
-
-                        <!-- <div class="filter-select-box">
-                            <button class="filter-select " data-select>
-                                <div class="select-value" data-select-value>Select Category</div>
-
-                                <div class="select-icon">
-                                    <ion-icon name="chevron-down"></ion-icon>
-                                </div>
-                            </button>
-
-                            <ul class="select-list">
-                                <li class="select-item"><button data-select-item>All</button></li>
-                                <li class="select-item"><button data-select-item>Telegram Bots</button></li>
-                                <li class="select-item"><button data-select-item>Desktop</button></li>
-                                <li class="select-item"><button data-select-item>Mobile</button></li>
-                                <li class="select-item"><button data-select-item>ML</button></li>
-                            </ul>
-                        </div> -->
 
                         <ul class="filter-list">
                             <form>
                                 <label><input type="checkbox" name="desktop">Desktop</label>
-                                <!-- name="css">CSS</label> -->
-                                <label><input type="checkbox" name="ios">iOS</label> <!-- name="js">JS</label> -->
+                                <label><input type="checkbox" name="ios">iOS</label>
                                 <label><input type="checkbox" name="tgbots">Telegram Bots</label>
-                                <!-- name="php">PHP</label> -->
-                                <!-- name="react">React</label> -->
+
+                                <label><input type="checkbox" name="python">Python</label>
+                                <label><input type="checkbox" name="swift">Swift</label>
+                                <label><input type="checkbox" name="c">C</label>
+
+                                <label><input type="checkbox" name="frontend">Frontend</label>
+                                <label><input type="checkbox" name="backend">Backend</label>
+                                <label><input type="checkbox" name="fullstack">Fullstack</label>
+
+                                <label><input type="checkbox" name="wip">WorkInProgress</label>
+                                <label><input type="checkbox" name="demo">Demo</label>
+                                <!-- <label><input type="checkbox" name="done">Done</label> -->
+
                             </form>
                         </ul>
 
-                        <ul class="project-list">
-                            <!-- <li class="project-item active" data-filter-item data-category="telegram bots"
-                            data-project-id="chat-tutor">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
+                        <!-- loaded from projects.json and updated dynamically -->
+                        <ul class="project-list"></ul>
 
-                                    <img src="https://i.postimg.cc/qRHpHMyd/project-1.jpg" alt="ChatTutor Telegram Bot"
-                                        loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">ChatTutor</h3>
-                                <p class="project-category">Telegram Bots</p>
-                            </a>
-                        </li> -->
-
-                            <!-- <li class="project-card" data-project-id="chat-tutor">
-                                <div class="tgbots"></div>
-                                <a href="https://github.com/LessVegetables/language-bot" target="_blank"
-                                    class="project-card-link">
-
-                                    <div class="project-card-content">
-                                        <h3 class="project-title">ChatTutor</h3>
-                                        <span class="project-tag">Telegram Bot</span>
-                                    </div>
-
-
-                                    <div class="project-card-image" data-project-id="chat-tutor">
-                                        <img src="assets//images/chat-1.png" alt="ChatTutor Logo" />
-                                        <img src="assets//images/chat-2.png" alt="Telegram Logo" />
-                                    </div>
-                                </a>
-                            </li>
-
-
-
-                            <li class="project-card" data-project-id="game-of-life">
-                                <div class="desktop"></div>
-                                <a href="https://github.com/LessVegetables/game-of-life" target="_blank"
-                                    class="project-card-link">
-
-                                    <div class="project-card-content">
-                                        <h3 class="project-title">Game Of Life</h3>
-                                        <span class="project-tag">Desktop</span>
-                                    </div>
-
-
-                                    <div class="project-card-image">
-                                        <img src="assets/images/gof-1.png" alt="GameOfLife home screen" />
-                                        <img src="assets/images/gof-2.png" alt="GameOfLife gameplay" />
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="project-card" data-project-id="umovie" data-project-status="unfinished">
-                                <div class="desktop"></div>
-                                <a href="https://github.com/BodgeDook/UPPRPO-Project-NSU" target="_blank"
-                                    class="project-card-link">
-
-                                    <div class="project-card-content">
-                                        <h3 class="project-title">uMovie</h3>
-                                        <span class="project-tag">Desktop</span>
-                                    </div>
-
-                                    <div class="project-card-image">
-                                        <img src="assets/images/wip.jpg" alt="WorkInProgress" />
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="project-card" data-project-id="ulp" data-project-status="unfinished">
-                                <div class="ios"></div>
-                                <a href="https://github.com/Universal-Loyalty-Program" target="_blank"
-                                    class="project-card-link">
-
-                                    <div class="project-card-content">
-                                        <h3 class="project-title">ULP</h3>
-                                        <span class="project-tag">Mobile</span>
-                                    </div>
-
-                                    <div class="project-card-image">
-                                        <img src="assets/images/wip.jpg" alt="WorkInProgress" />
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="project-card" data-project-status="unfinished">
-                                <div class="desktop"></div>
-                                <a href="https://github.com/LessVegetables/ml" target="_blank"
-                                    class="project-card-link">
-
-                                    <div class="project-card-content">
-                                        <h3 class="project-title">Virtual Shopping</h3>
-                                        <span class="project-tag">ML</span>
-                                    </div>
-
-                                    <div class="project-card-image">
-                                        <img src="assets/images/wip.jpg" alt="WorkInProgress" />
-                                    </div>
-                                </a>
-                            </li> -->
-
-
-                            <!-- 
-
-                        <li class="project-tile active" data-filter-item data-category="ml" data-project-id="ml">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-
-                                    <img src="assets/images/wip.jpg" alt="ML" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Virtual Shopping</h3>
-                                <p class="project-category">ML</p>
-                            </a>
-                        </li> -->
-                        </ul>
                     </section>
                 </div>
             </article>
