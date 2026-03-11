@@ -1,7 +1,12 @@
 /* PORTFOLIO */
 .filter-list {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    padding-left: 5px;
+    margin-bottom: 30px;
 }
 
 /* .filter-select-box {
@@ -145,6 +150,12 @@
 
     .filter-list {
         grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 25px;
+        padding-left: 5px;
+        margin-bottom: 30px;
     }
 }
 
