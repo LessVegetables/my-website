@@ -8,6 +8,8 @@
 
 html {
     font-family: var(--ff-poppins);
+    scroll-behavior: smooth;
+    /* ^added just for home/about buttons. Should not affect anything else */
 }
 
 body {

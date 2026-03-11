@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // connect button
-    themeToggle.addEventListener("click", function () {
+    themeToggle.addEventListener("click", function (e) {
+        e.preventDefault();
         let currentTheme = document.documentElement.getAttribute("data-theme");
         setTheme(currentTheme == "light" ? "dark" : "light")
     });
@@ -75,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Toggle language when button is clicked
-    document.getElementById("lang-toggle").addEventListener("click", function () {
+    document.getElementById("lang-toggle").addEventListener("click", function (e) {
+        e.preventDefault();
         currentLang = currentLang === "en" ? "ru" : "en";
         localStorage.setItem("lang", currentLang);
         applyTranslations(currentLang);
@@ -113,7 +115,10 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); })
+sidebarBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    elementToggleFunc(sidebar);
+})
 
 //Activating Modal-testimonial
 
@@ -266,6 +271,7 @@ let pendingTimer = null;
 for (let i = 0; i < navigationLinks.length; i++) {
     navigationLinks[i].addEventListener('click', function (event) {
         event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // If the user clicks again mid-transition, cancel the previous pending activation
         if (pendingTimer) {
