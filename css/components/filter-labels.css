@@ -1,37 +1,58 @@
 :root {
     /* Platform — purple */
-    --platform: #5c548a;
+    /* --platform: #5c548a;
     --desktop: #5c548a;
     --ios: #7b6fa8;
     --web: #8b7fc4;
-    --tgbots: #4a6da8;
+    --tgbots: #4a6da8; */
+    --platform: #6a5ecc;
+    --desktop: #6a5ecc;
+    --ios: #8b7fd8;
+    --web: #9d8ff0;
+    --tgbots: #3d72cc;
 
     /* Language — orange */
-    --language: #c97b2f;
+    /* --language: #c97b2f;
     --python: #c97b2f;
     --swift: #d4813a;
     --javascript: #c8a020;
-    --c: #b06020;
+    --c: #b06020; */
+    --language: #e07820;
+    --python: #e07820;
+    --swift: #f08830;
+    --javascript: #d4a810;
+    --c: #c06010;
 
     /* Architecture — green */
-    --architecture: #4a8a5c;
+    /* --architecture: #4a8a5c;
     --frontend: #4a8a5c;
     --backend: #3a7a4c;
     --fullstack: #2d6b3e;
-    --ml: #2d6b3e;
+    --ml: #2d6b3e; */
+    --architecture: #2a9e58;
+    --frontend: #2a9e58;
+    --backend: #1a8e48;
+    --fullstack: #107a38;
+    --ml: #107a38;
+
 
     /* Scope
     --scope:        #888; */
-    --utility: #528759;
+    /* --utility: #528759; */
+    --utility: #38a855;
     /* --app:          #999;
     --service:      #777;
     */
 
     /* State — yellow-green */
-    --state: #7ab030;
+    /* --state: #7ab030;
     --wip: #a0a020;
     --demo: #7ab030;
-    --done: #5a9020;
+    --done: #5a9020; */
+    --state: #88c422;
+    --wip: #b0b010;
+    --demo: #88c422;
+    --done: #60a010;
 }
 
 form {
@@ -49,7 +70,7 @@ label {
     font-family: sans-serif;
     font-size: 1.1rem;
     display: inline-block;
-    outline: 2px solid color-mix(in lab, black 30%, var(--bg-color));
+    /* outline: 2px solid color-mix(in lab, black 30%, var(--bg-color)); */
     padding: 10px;
     border-radius: 15px;
     min-width: 7ch;
@@ -129,10 +150,14 @@ label {
         --bg-color: var(--done);
     }
 
-    background: color-mix(in lab, white 70%, var(--bg-color));
+    /* background: color-mix(in lab, white 70%, var(--bg-color)); */
+    background: color-mix(in lab, white 50%, var(--bg-color));
+
 
     &:hover {
-        background: color-mix(in lab, white 90%, var(--bg-color));
+        /* background: color-mix(in lab, white 90%, var(--bg-color)); */
+        background: color-mix(in lab, white 75%, var(--bg-color));
+
     }
 
     &:has(:checked) {
