@@ -363,9 +363,16 @@ async function loadProjects(lang = 'en') {
         const tagBadges = project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
 
 
-        const images = project.assets.map(src =>
-            `<img src="${src}" alt="${project.name[lang]}" />`
-        ).join('');
+        // const images = project.assets.map(src =>
+        //     `<img src="${src}" alt="${project.name[lang]}" />`
+        // ).join('');
+ 
+        const images = project.assets.map(src => {
+            const isLight = src.includes('-light.');
+            const isDark = src.includes('-dark.');
+            const themeClass = isLight ? 'img-light-only' : isDark ? 'img-dark-only' : '';
+            return `<img src="${src}" alt="${project.name[lang]}" class="${themeClass}" />`;
+        }).join('');
 
         const card = document.createElement('li');
         card.className = 'project-card';

@@ -148,3 +148,26 @@
 }
 
 */
+
+[data-project-id="cardly"] .project-card-image img:nth-child(2) {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: translateX(-50%), translateY(-100%), rotate(-1deg);
+    box-shadow: none;
+}
+
+[data-theme="light"] .img-dark-only {
+    display: none;
+}
+
+:root:not([data-theme="light"]) .img-light-only {
+    display: none;
+}
+
+/* 
+cardly colors:
+;color: #F09837;
+color: #EA4025;
+color: #4294F7;
+*/

@@ -94,10 +94,10 @@
             }
         },
         {
-            "id": "ulp",
+            "id": "cardly",
             "name": {
-                "en": "ULP",
-                "ru": "ULP"
+                "en": "Cardly",
+                "ru": "Cardly"
             },
             "short-description": {
                 "en": "short_description",
@@ -108,19 +108,21 @@
                 "ru": "длинное_описание"
             },
             "assets": [
-                "assets/images/wip.jpg"
+                "assets/images/cardly-light.webp",
+                "assets/images/cardly-dark.webp"
             ],
             "tags": [
-                "",
+                "wip",
                 "python",
                 "service",
-                "swift",
-                "wip"
+                "swift"
             ],
-            "status": "unfinished",
-            "github-url": "https://github.com/Universal-Loyalty-Program",
+            "status": "finished",
+            "github-url": "https://cardlyapp.ru",
             "styles": {
-                "image-container": "transform: translateY(-50%) rotate(-45deg);"
+                "card": "background: conic-gradient(from 45deg, #4294F7, #EA4025, #F09837, #4294F7);",
+                "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-1deg); box-shadow: none; transition: transform 0.3s ease;",
+                "image-2": "transform: translateX(-50%), translateY(-100%), rotate(-1deg); box-shadow: none; transition: transform 0.3s ease;"
             }
         }
     ]
