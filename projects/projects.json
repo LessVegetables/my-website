@@ -128,6 +128,38 @@
                 "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-1deg); box-shadow: none; transition: transform 0.3s ease;",
                 "image-2": "transform: translateX(-50%), translateY(-100%), rotate(-1deg); box-shadow: none; transition: transform 0.3s ease;"
             }
+        },
+        {
+            "id": "chat-bot",
+            "name": {
+                "en": "ChatBot",
+                "ru": "ChatBot"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/chat-3.png",
+                "assets/images/chat-2.webp"
+            ],
+            "tags": [
+                "demo",
+                "tgbots",
+                "python",
+                "backend"
+            ],
+            "status": "finished",
+            "github-url": "https://t.me/dfg_chat_bot",
+            "styles": {
+                "card": "background: linear-gradient(-40deg, #71e9a6 0%, #4ba4e0 100%);",
+                "image-1": "box-shadow: none;",
+                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
+            }
         }
     ]
 }
