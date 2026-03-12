@@ -160,3 +160,14 @@ span {
         opacity: 0;
     }
 }
+
+/* min <section projects> hight so that the page doesn't jolt arround when toggling filters */
+.projects {
+    min-height: 100vh;
+}
+
+@media (min-width: 600px) {
+    .projects {
+        min-height: 0vh;
+    }
+}
