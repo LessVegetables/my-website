@@ -39,8 +39,6 @@ img {
 }
 
 .buttons button {
-    /* transition: all 0.18s ease; */
-
     background: hsl(210, 100%, 56%);
     color: white;
     padding: 10px 20px;
@@ -53,7 +51,6 @@ img {
     width: 49%;
 }
 
-/* click effect */
 .buttons button:active {
     transform: translateY(2px);
 }
@@ -62,7 +59,6 @@ img {
     background-color: hsl(211, 100%, 35%);
 }
 
-/* mobile */
 @media (max-width: 480px) {
     .buttons button {
         width: 100%;
