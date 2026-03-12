@@ -1,38 +1,6 @@
 {
     "projects": [
         {
-            "id": "chat-tutor",
-            "name": {
-                "en": "ChatTutor",
-                "ru": "ChatTutor"
-            },
-            "short-description": {
-                "en": "short_description",
-                "ru": "короткое_описание"
-            },
-            "long-description": {
-                "en": "long_description",
-                "ru": "длинное_описание"
-            },
-            "assets": [
-                "assets/images/chat-1.webp",
-                "assets/images/chat-2.webp"
-            ],
-            "tags": [
-                "",
-                "tgbots",
-                "python",
-                "backend"
-            ],
-            "status": "finished",
-            "github-url": "https://github.com/LessVegetables/language-bot",
-            "styles": {
-                "card": "background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);",
-                "image-1": "transform: rotate(-10deg); box-shadow: none;",
-                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
-            }
-        },
-        {
             "id": "game-of-life",
             "name": {
                 "en": "Game Of Life",
@@ -60,37 +28,6 @@
             "github-url": "https://github.com/LessVegetables/game-of-life",
             "styles": {
                 "card": "background: linear-gradient(135deg, #3489ce 0%, #fc5f5f 100%);"
-            }
-        },
-        {
-            "id": "qr",
-            "name": {
-                "en": "QR Generator",
-                "ru": "QR Генератор"
-            },
-            "short-description": {
-                "en": "short_description",
-                "ru": "короткое_описание"
-            },
-            "long-description": {
-                "en": "long_description",
-                "ru": "длинное_описание"
-            },
-            "assets": [
-                "assets/images/qr.png"
-            ],
-            "tags": [
-                "utility",
-                "web",
-                "tgbots",
-                "javascript",
-                "frontend"
-            ],
-            "status": "finished",
-            "github-url": "https://www.d.gehrman.me/qr/",
-            "styles": {
-                "card": "background: linear-gradient(145deg, #3489ce 0%, #c2eaff 100%);",
-                "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-4deg); box-shadow: none;"
             }
         },
         {
@@ -130,38 +67,6 @@
             }
         },
         {
-            "id": "chat-bot",
-            "name": {
-                "en": "ChatBot",
-                "ru": "ChatBot"
-            },
-            "short-description": {
-                "en": "short_description",
-                "ru": "короткое_описание"
-            },
-            "long-description": {
-                "en": "long_description",
-                "ru": "длинное_описание"
-            },
-            "assets": [
-                "assets/images/chat-3.png",
-                "assets/images/chat-2.webp"
-            ],
-            "tags": [
-                "demo",
-                "tgbots",
-                "python",
-                "backend"
-            ],
-            "status": "finished",
-            "github-url": "https://t.me/dfg_chat_bot",
-            "styles": {
-                "card": "background: linear-gradient(217deg, #71e9a6ce, transparent 70.71%),linear-gradient(127deg, #4ba4e0ce, transparent 70.71%),linear-gradient(336deg, #44a6d3ce, transparent 70.71%)",
-                "image-1": "transform: translateX(-50%), translateY(-100%); box-shadow: none;",
-                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
-            }
-        },
-        {
             "id": "find-my-item-bot",
             "name": {
                 "en": "FindMyItem",
@@ -190,6 +95,101 @@
             "styles": {
                 "card": "background: linear-gradient(-40deg, #71e9a6 0%, #4ba4e0 100%);",
                 "image-1": "box-shadow: none;",
+                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
+            }
+        },
+        {
+            "id": "chat-tutor",
+            "name": {
+                "en": "ChatTutor",
+                "ru": "ChatTutor"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/chat-1.webp",
+                "assets/images/chat-2.webp"
+            ],
+            "tags": [
+                "",
+                "tgbots",
+                "python",
+                "backend"
+            ],
+            "status": "finished",
+            "github-url": "https://github.com/LessVegetables/language-bot",
+            "styles": {
+                "card": "background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);",
+                "image-1": "transform: rotate(-10deg); box-shadow: none;",
+                "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
+            }
+        },
+        {
+            "id": "qr",
+            "name": {
+                "en": "QR Generator",
+                "ru": "QR Генератор"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/qr.png"
+            ],
+            "tags": [
+                "utility",
+                "web",
+                "tgbots",
+                "javascript",
+                "frontend"
+            ],
+            "status": "finished",
+            "github-url": "https://www.d.gehrman.me/qr/",
+            "styles": {
+                "card": "background: linear-gradient(145deg, #3489ce 0%, #c2eaff 100%);",
+                "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-4deg); box-shadow: none;"
+            }
+        },
+        {
+            "id": "chat-bot",
+            "name": {
+                "en": "ChatBot",
+                "ru": "ChatBot"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/chat-3.png",
+                "assets/images/chat-2.webp"
+            ],
+            "tags": [
+                "demo",
+                "tgbots",
+                "python",
+                "backend"
+            ],
+            "status": "finished",
+            "github-url": "https://t.me/dfg_chat_bot",
+            "styles": {
+                "card": "background: linear-gradient(217deg, #71e9a6ce, transparent 70.71%),linear-gradient(127deg, #4ba4e0ce, transparent 70.71%),linear-gradient(336deg, #44a6d3ce, transparent 70.71%)",
+                "image-1": "transform: translateX(-50%), translateY(-100%); box-shadow: none;",
                 "image-2": "left: 80px; top: -30px; max-width: 75px; transform: rotate(0deg); box-shadow: none;"
             }
         }
