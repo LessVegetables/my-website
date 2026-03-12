@@ -114,8 +114,12 @@
             "tags": [
                 "wip",
                 "python",
+                "swift",
+                "ios",
                 "service",
-                "swift"
+                "fullstack",
+                "frontend",
+                "backend"
             ],
             "status": "finished",
             "github-url": "https://cardlyapp.ru",
