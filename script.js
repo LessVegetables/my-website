@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentLang = currentLang === "en" ? "ru" : "en";
         localStorage.setItem("lang", currentLang);
         applyTranslations(currentLang);
+        loadProjects(currentLang);
     });
 
     // Apply translations based on the selected language
