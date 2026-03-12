@@ -1,4 +1,7 @@
 -[x] fix my light/dark mode refactor in /script.js
--[ ] update projects
--[ ] add tag filtering to project
+-[x] update projects
+-[x] add tag filtering to project
+-[ ] add the other two telegram bots:
+    -[ ] fmi
+    -[ ] ChatBot
 -[ ] create detailed page of project (instead of just a redirect to github)
