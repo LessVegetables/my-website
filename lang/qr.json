@@ -3,7 +3,7 @@
         "en": "QR Code Generator",
         "ru": "Генератор QR Кодов"
     },
-    "input-placeholder": {
+    "placeholder": {
         "en": "Type the thing to turn into a QR code here",
         "ru": "Печатайте то что вы хотите превратить в QR код сюда"
     },

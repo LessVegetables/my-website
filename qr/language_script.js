@@ -49,4 +49,3 @@ function applyTranslations(lang) {
 }
 
 loadTranslations();
-applyTranslations(currentLang);
