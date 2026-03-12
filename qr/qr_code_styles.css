@@ -10,6 +10,7 @@ input {
     width: 100%;
     padding: 12px;
     font-size: 16px;
+    border-radius: 8px;
 }
 
 .wrap {
@@ -27,6 +28,45 @@ img {
     color: #555;
     font-size: 14px;
     font-style: italic;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttons button {
+    /* transition: all 0.18s ease; */
+
+    background: hsl(210, 100%, 56%);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 49%;
+}
+
+/* click effect */
+.buttons button:active {
+    transform: translateY(2px);
+}
+
+.buttons button:hover {
+    background-color: hsl(211, 100%, 35%);
+}
+
+/* mobile */
+@media (max-width: 480px) {
+    .buttons button {
+        width: 100%;
+    }
 }
 
 @media (prefers-color-scheme: dark) {

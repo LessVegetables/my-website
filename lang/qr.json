@@ -8,7 +8,15 @@
         "ru": "Печатайте то что вы хотите превратить в QR код сюда"
     },
     "hint": {
-        "en": "Right-click / long-press to save",
+        "en": "Right-click / long-press to save. Or:",
         "ru": "Правый-клик / длинное-нажатие чтобы сохранить"
+    },
+    "savePNG": {
+        "en": "Save as Photo (PNG)",
+        "ru": "Сохранить Фото (PNG)"
+    },
+    "saveSVG": {
+        "en": "Save as SVG",
+        "ru": "Сохранить SVG"
     }
 }

@@ -17,10 +17,15 @@
     <h1 data-key="title">QR Code Generator</h1>
 
     <div class="wrap">
-        <input id="text" data-key="input_placeholder" data-attr="placeholder"
+        <input id="text" data-key="input_placeholder" data-attr="input-placeholder"
             placeholder="Type the thing to turn into a QR code here" autocomplete="off" />
         <img id="qrImg" alt="QR code" width="256" height="256" />
-        <p class="hint" data-key="hint">Right-click / long-press to save</p>
+        <p class="hint" data-key="hint">Right-click / long-press to save. Or:</p>
+
+        <div class="buttons">
+            <button id="savePNG" data-key="savePNG">Save as Photo (PNG)</button>
+            <button id="saveSVG" data-key="saveSVG">Save as SVG</button>
+        </div>
     </div>
 </body>
 
