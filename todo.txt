@@ -4,4 +4,5 @@
 -[ ] add the other two telegram bots:
     -[ ] fmi
     -[ ] ChatBot
--[ ] create detailed page of project (instead of just a redirect to github)
+-[ ] fix the tags in place — so that the bottom of the page doesn't jolt the whole view arround from toggling the tags
+-[ ] create detailed page of project (instead of just a redirect to github/pages)
