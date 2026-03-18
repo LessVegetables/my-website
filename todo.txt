@@ -4,6 +4,7 @@
 -[x] add the other two telegram bots:
     -[x] fmi
     -[x] ChatBot
+    -[x] QR iOS
 -[ ] edit the resume link so that it opens the right language
 -[ ] create a resume landing page (heck, maybe just replace the about section with it)
 -[ ] add my certificate
