@@ -117,6 +117,9 @@
     transform: scale(1.05);
 }
 
+.project-card[data-id="qr-ios"]:hover .image-2 {
+    transform: translateX(-50%) translateY(-100%) rotate(0deg);
+}
 
 /* MOVED TO /projects/projects.json */
 /* Project-specific gradients */

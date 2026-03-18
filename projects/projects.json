@@ -162,6 +162,39 @@
             }
         },
         {
+            "id": "qr-ios",
+            "name": {
+                "en": "QR Generator",
+                "ru": "QR Генератор"
+            },
+            "short-description": {
+                "en": "short_description",
+                "ru": "короткое_описание"
+            },
+            "long-description": {
+                "en": "long_description",
+                "ru": "длинное_описание"
+            },
+            "assets": [
+                "assets/images/qr.png",
+                "assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+            ],
+            "tags": [
+                "demo",
+                "utility",
+                "ios",
+                "swift",
+                "frontend"
+            ],
+            "status": "finished",
+            "github-url": "https://apps.apple.com/us/app/qr-simple-generator/id6759912876",
+            "styles": {
+                "card": "background: linear-gradient(145deg, #3489ce 0%, #c2eaff 100%);",
+                "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-4deg); box-shadow: none;",
+                "image-2": "transform: translateX(-10%) translateY(125%) rotate(-3deg) scale(125%); filter: drop-shadow(0 0 20px black); transition: none;"
+            }
+        },
+        {
             "id": "chat-bot",
             "name": {
                 "en": "ChatBot",
