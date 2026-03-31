@@ -98,6 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+
+        document.querySelectorAll("[data-href-key]").forEach((el) => {
+            const key = el.getAttribute("data-href-key");
+            if (translations[key] && translations[key][lang]) {
+                el.setAttribute("href", translations[key][lang]);
+            }
+        });
     }
 
     // Load the projects on page load
@@ -366,7 +373,7 @@ async function loadProjects(lang = 'en') {
         // const images = project.assets.map(src =>
         //     `<img src="${src}" alt="${project.name[lang]}" />`
         // ).join('');
- 
+
         const images = project.assets.map(src => {
             const isLight = src.includes('-light.');
             const isDark = src.includes('-dark.');

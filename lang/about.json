@@ -15,6 +15,10 @@
         "en": "Open resume",
         "ru": "Открыть резюме"
     },
+    "resume-path": {
+        "en": "./files/resume-en.pdf",
+        "ru": "./files/resume-ru.pdf"
+    },
     "education": {
         "en": "Education",
         "ru": "Образование"
