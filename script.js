@@ -107,6 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    const path = window.location.hash.replace('#', '') || 'home';
+    document.querySelector(`[data-page="${path}"]`)?.classList.add('active');
+    document.querySelector(`[data-nav-link][data-key="${path}"]`)?.classList.add('active');
+
     // Load the projects on page load
     loadProjects(currentLang);
 
@@ -288,6 +292,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
         }
 
         const key = this.dataset.key;
+        history.pushState(null, '', '#' + key);
 
         // If already on this page, do nothing
         const current = document.querySelector('[data-page].active');
