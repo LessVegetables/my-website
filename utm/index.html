@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM Constructor</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg2: #f5f5f5;
+            --border: #e0e0e0;
+            --text: #111111;
+            --muted: #777777;
+            --accent: #111111;
+            --chip-bg: #f0f0f0;
+            --chip-active-bg: #111111;
+            --chip-active-text: #ffffff;
+            --output-bg: #f9f9f9;
+            --copy-bg: #111111;
+            --copy-text: #ffffff;
+            --copy-hover: #333333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --bg2: #1a1a1a;
+                --border: #2e2e2e;
+                --text: #f0f0f0;
+                --muted: #888888;
+                --accent: #f0f0f0;
+                --chip-bg: #1f1f1f;
+                --chip-active-bg: #f0f0f0;
+                --chip-active-text: #111111;
+                --output-bg: #1a1a1a;
+                --copy-bg: #f0f0f0;
+                --copy-text: #111111;
+                --copy-hover: #cccccc;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+        }
+
+        .wrap {
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+        }
+
+        h1 span {
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .field {
+            margin-bottom: 1.75rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"],
+        input[type="url"] {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            font-family: system-ui, sans-serif;
+            font-size: 0.9rem;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        input[type="text"]:focus,
+        input[type="url"]:focus {
+            border-color: var(--muted);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .chip {
+            padding: 0.3rem 0.7rem;
+            font-family: system-ui, sans-serif;
+            font-size: 0.8rem;
+            background: var(--chip-bg);
+            color: var(--text);
+            border: 1px solid transparent;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.1s, color 0.1s;
+            user-select: none;
+        }
+
+        .chip:hover {
+            border-color: var(--border);
+        }
+
+        .chip.active {
+            background: var(--chip-active-bg);
+            color: var(--chip-active-text);
+            border-color: transparent;
+        }
+
+        .custom-input {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .custom-input::placeholder {
+            color: var(--muted);
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .output-wrap {
+            background: var(--output-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            min-height: 56px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #output {
+            font-family: system-ui, sans-serif;
+            font-size: 0.82rem;
+            color: var(--text);
+            word-break: break-all;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        #output.empty {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        button.primary {
+            padding: 0.6rem 1.2rem;
+            font-family: system-ui, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--copy-bg);
+            color: var(--copy-text);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+            flex: 1;
+        }
+
+        button.primary:hover {
+            background: var(--copy-hover);
+        }
+
+        button.secondary {
+            padding: 0.6rem 1rem;
+            font-family: system-ui, sans-serif;
+            font-size: 0.85rem;
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        button.secondary:hover {
+            color: var(--text);
+            border-color: var(--muted);
+        }
+
+        .notice {
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            color: var(--muted);
+            height: 1rem;
+            transition: opacity 0.3s;
+        }
+    </style>
+    <script defer src="https://stat.gehrman.me/script.js"
+        data-website-id="1e6bcb91-1bd7-42af-a927-ceffd4687832"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>UTM Constructor <span>/ link tagger</span></h1>
+
+        <div class="field">
+            <label>URL</label>
+            <input type="url" id="url" placeholder="https://yoursite.com/page" oninput="build()">
+        </div>
+
+        <div class="field">
+            <label>Source</label>
+            <div class="chips" id="chips-source">
+                <div class="chip" data-group="source" data-val="telegram">telegram</div>
+                <div class="chip" data-group="source" data-val="whatsapp">whatsapp</div>
+                <div class="chip" data-group="source" data-val="email">email</div>
+                <div class="chip" data-group="source" data-val="linkedin">linkedin</div>
+                <div class="chip" data-group="source" data-val="sms">sms</div>
+                <div class="chip" data-group="source" data-val="instagram">instagram</div>
+            </div>
+            <input type="text" class="custom-input" id="custom-source" placeholder="or type custom…"
+                oninput="onCustomInput('source')">
+        </div>
+
+        <div class="field">
+            <label>Medium</label>
+            <div class="chips" id="chips-medium">
+                <div class="chip" data-group="medium" data-val="chat">chat</div>
+                <div class="chip" data-group="medium" data-val="email">email</div>
+                <div class="chip" data-group="medium" data-val="social">social</div>
+                <div class="chip" data-group="medium" data-val="referral">referral</div>
+            </div>
+            <input type="text" class="custom-input" id="custom-medium" placeholder="or type custom…"
+                oninput="onCustomInput('medium')">
+        </div>
+
+        <div class="field">
+            <label>Campaign</label>
+            <div class="chips" id="chips-campaign">
+                <div class="chip" data-group="campaign" data-val="proposal">proposal</div>
+                <div class="chip" data-group="campaign" data-val="followup">followup</div>
+                <div class="chip" data-group="campaign" data-val="intro">intro</div>
+                <div class="chip" data-group="campaign" data-val="invoice">invoice</div>
+                <div class="chip" data-group="campaign" data-val="portfolio">portfolio</div>
+                <div class="chip" data-group="campaign" data-val="personal">personal</div>
+            </div>
+            <input type="text" class="custom-input" id="custom-campaign" placeholder="or type custom…"
+                oninput="onCustomInput('campaign')">
+        </div>
+
+        <div class="field">
+            <label>Content <span
+                    style="color:var(--muted);font-size:0.7rem;text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input type="text" id="custom-content" placeholder="e.g. top_cta, pdf_link…" oninput="build()">
+        </div>
+
+        <hr class="divider">
+
+        <div class="output-wrap">
+            <span id="output" class="empty">your tagged url will appear here</span>
+        </div>
+
+        <div class="actions">
+            <button class="primary" onclick="copyUrl()">Copy URL</button>
+            <button class="secondary" onclick="reset()">Clear</button>
+        </div>
+        <div class="notice" id="notice"></div>
+    </div>
+
+    <script>
+        const state = { source: '', medium: '', campaign: '' };
+
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const group = chip.dataset.group;
+                const val = chip.dataset.val;
+                const wasActive = chip.classList.contains('active');
+
+                document.querySelectorAll(`.chip[data-group="${group}"]`).forEach(c => c.classList.remove('active'));
+                document.getElementById(`custom-${group}`).value = '';
+
+                if (!wasActive) {
+                    chip.classList.add('active');
+                    state[group] = val;
+                } else {
+                    state[group] = '';
+                }
+                build();
+            });
+        });
+
+        function onCustomInput(group) {
+            const val = document.getElementById(`custom-${group}`).value.trim().replace(/\s+/g, '_').toLowerCase();
+            document.querySelectorAll(`.chip[data-group="${group}"]`).forEach(c => c.classList.remove('active'));
+            state[group] = val;
+            build();
+        }
+
+        function build() {
+            const base = document.getElementById('url').value.trim();
+            const content = document.getElementById('custom-content').value.trim().replace(/\s+/g, '_').toLowerCase();
+            const el = document.getElementById('output');
+
+            if (!base) {
+                el.textContent = 'your tagged url will appear here';
+                el.classList.add('empty');
+                return;
+            }
+
+            const params = new URLSearchParams();
+            if (state.source) params.set('utm_source', state.source);
+            if (state.medium) params.set('utm_medium', state.medium);
+            if (state.campaign) params.set('utm_campaign', state.campaign);
+            if (content) params.set('utm_content', content);
+
+            const sep = base.includes('?') ? '&' : '?';
+            const result = params.toString() ? base + sep + params.toString() : base;
+
+            el.textContent = result;
+            el.classList.remove('empty');
+        }
+
+        function copyUrl() {
+            const text = document.getElementById('output').textContent;
+            if (!text || document.getElementById('output').classList.contains('empty')) return;
+            navigator.clipboard.writeText(text).then(() => flash('Copied!'));
+        }
+
+        function reset() {
+            document.getElementById('url').value = '';
+            document.getElementById('custom-content').value = '';
+            ['source', 'medium', 'campaign'].forEach(g => {
+                state[g] = '';
+                document.getElementById(`custom-${g}`).value = '';
+                document.querySelectorAll(`.chip[data-group="${g}"]`).forEach(c => c.classList.remove('active'));
+            });
+            const el = document.getElementById('output');
+            el.textContent = 'your tagged url will appear here';
+            el.classList.add('empty');
+        }
+
+        function flash(msg) {
+            const n = document.getElementById('notice');
+            n.textContent = msg;
+            n.style.opacity = '1';
+            setTimeout(() => { n.style.opacity = '0'; }, 1500);
+        }
+    </script>
+</body>
+
+</html>
