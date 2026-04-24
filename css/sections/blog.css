@@ -1,1 +1,189 @@
 /* BLOG section (currently handled mostly in components/cards.css) */
+.tracker-grid-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.tracker-grid-wrap::-webkit-scrollbar {
+    height: 5px;
+}
+
+.tracker-grid-wrap::-webkit-scrollbar-track {
+    background: var(--onyx);
+    border-radius: 5px;
+}
+
+.tracker-grid-wrap::-webkit-scrollbar-thumb {
+    background: var(--selection-background);
+    border-radius: 5px;
+}
+
+.tracker-table {
+    border-collapse: separate;
+    border-spacing: 3px;
+    table-layout: fixed;
+}
+
+/* column 1: habit name */
+.tracker-table th.tracker-label-name {
+    font-family: var(--ff-poppins);
+    font-size: var(--fs8);
+    font-weight: var(--fw500);
+    color: var(--sub-text-1);
+    white-space: nowrap;
+    width: 130px;
+    min-width: 130px;
+    max-width: 130px;
+    padding-right: 8px;
+    text-align: left;
+    vertical-align: middle;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--sidebar-background);
+}
+
+/* column 2: streak — sticky right after name (130px + 3px border-spacing) */
+.tracker-table th.tracker-label-streak {
+    font-family: var(--ff-poppins);
+    font-size: var(--fs8);
+    font-weight: var(--fw500);
+    color: hsl(25, 95%, 58%);
+    white-space: nowrap;
+    width: 48px;
+    min-width: 48px;
+    padding-right: 10px;
+    text-align: left;
+    vertical-align: middle;
+    position: sticky;
+    left: 133px;
+    /* name width (130) + border-spacing (3) */
+    z-index: 2;
+    background: var(--sidebar-background);
+}
+
+/* two corner cells mirror the two sticky columns */
+.tracker-table th.tracker-corner-name {
+    width: 130px;
+    min-width: 130px;
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--sidebar-background);
+}
+
+.tracker-table th.tracker-corner-streak {
+    width: 48px;
+    min-width: 48px;
+    position: sticky;
+    left: 133px;
+    z-index: 3;
+    background: var(--sidebar-background);
+}
+
+/* month header cells */
+.tracker-table th.tracker-month {
+    font-family: var(--ff-poppins);
+    font-size: var(--fs8);
+    font-weight: var(--fw400);
+    color: var(--light-gray70);
+    text-align: left;
+    vertical-align: bottom;
+    padding-bottom: 4px;
+    white-space: nowrap;
+    /* spans set via JS */
+}
+
+/* day cells */
+.tracker-table td {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    padding: 0;
+    position: relative;
+    cursor: default;
+    transition: transform var(--transition1), filter var(--transition1);
+}
+
+/* 
+.tracker-table td:hover {
+    transform: scale(1.6);
+    z-index: 10;
+} */
+
+.tracker-table td[data-state="done"] {
+    background: var(--selection-background);
+    box-shadow: 0 0 5px hsla(210, 100%, 65%, .4);
+}
+
+.tracker-table td[data-state="missed"] {
+    background: var(--jet);
+}
+
+.tracker-table td[data-state="untracked"] {
+    background: transparent;
+}
+
+/* tooltip */
+.tracker-table td::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--onyx);
+    color: var(--main-text-2);
+    font-family: var(--ff-poppins);
+    font-size: 10px;
+    white-space: nowrap;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--jet);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition1);
+    z-index: 100;
+}
+
+/* 
+.tracker-table td:hover::after {
+    opacity: 1;
+} */
+
+/* legend */
+.tracker-legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.tracker-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--ff-poppins);
+    font-size: var(--fs8);
+    color: var(--light-gray70);
+}
+
+.tracker-legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.tracker-legend-swatch.done {
+    background: var(--selection-background);
+}
+
+.tracker-legend-swatch.missed {
+    background: var(--jet);
+}
+
+.tracker-legend-swatch.untracked {
+    background: transparent;
+    border: 1px solid var(--jet);
+}

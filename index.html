@@ -317,6 +317,158 @@
                     </header>
 
                     <p><i>Work in progress :)</i></p>
+                    <section class="habit-tracker">
+
+                        <h2 class="h2 article-title">Accountability</h2>
+
+                        <div class="tracker-grid-wrap">
+                            <table class="tracker-table" id="ht-table">
+                                <thead>
+                                    <tr id="ht-month-row">
+                                        <th class="tracker-corner-name"></th>
+                                        <th class="tracker-corner-streak"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ht-body"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="tracker-legend">
+                            <div class="tracker-legend-item">
+                                <span class="tracker-legend-swatch done"></span> Done
+                            </div>
+                            <div class="tracker-legend-item">
+                                <span class="tracker-legend-swatch missed"></span> Missed
+                            </div>
+                            <div class="tracker-legend-item">
+                                <span class="tracker-legend-swatch untracked"></span> Not tracked yet
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <script>
+                        (function () {
+
+                            function dateKey(d) {
+                                return d.toLocaleDateString('sv'); // YYYY-MM-DD, no timezone shift
+                            }
+
+                            function addDays(d, n) {
+                                const r = new Date(d);
+                                r.setDate(r.getDate() + n);
+                                return r;
+                            }
+
+                            function dateRange(start, end) {
+                                const days = [];
+                                let cur = new Date(start);
+                                const last = new Date(end);
+                                while (cur <= last) { days.push(dateKey(cur)); cur = addDays(cur, 1); }
+                                return days;
+                            }
+
+                            const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                            const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+                            async function render() {
+                                let data;
+                                try {
+                                    const res = await fetch('tracker.json');
+                                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                                    data = await res.json();
+                                } catch (e) {
+                                    document.getElementById('ht-table').outerHTML =
+                                        `<p style="color:var(--sub-text-1);font-size:var(--fs7)">⚠ Could not load tracker.json — ${e.message}</p>`;
+                                    return;
+                                }
+
+                                const habits = data.habits || {};
+                                const keys = Object.keys(habits);
+                                if (!keys.length) return;
+
+                                const today = dateKey(new Date());
+
+                                // always show exactly the last 30 days
+                                const globalStart = dateKey(addDays(new Date(), -29));
+
+                                const allDays = dateRange(globalStart, today);
+
+                                // ── month header row ──
+                                const monthRow = document.getElementById('ht-month-row');
+                                let lastMonth = -1;
+                                let spanCount = 0;
+                                let lastTh = null;
+
+                                allDays.forEach(day => {
+                                    const m = parseInt(day.slice(5, 7), 10) - 1;
+                                    if (m !== lastMonth) {
+                                        if (lastTh) lastTh.colSpan = spanCount;
+                                        const th = document.createElement('th');
+                                        th.className = 'tracker-month';
+                                        th.textContent = MONTHS[m];
+                                        monthRow.appendChild(th);
+                                        lastTh = th;
+                                        spanCount = 1;
+                                        lastMonth = m;
+                                    } else {
+                                        spanCount++;
+                                    }
+                                });
+                                if (lastTh) lastTh.colSpan = spanCount;
+
+                                // ── one <tr> per habit ──
+                                const tbody = document.getElementById('ht-body');
+
+                                keys.forEach(k => {
+                                    const habit = habits[k];
+                                    const logSet = new Set(habit.log || []);
+
+                                    const habitStart = habit.log && habit.log.length
+                                        ? habit.log.reduce((a, b) => (a < b ? a : b))
+                                        : today;
+
+                                    const tr = document.createElement('tr');
+                                    tr.dataset.habit = k;
+
+                                    // current streak: consecutive days going back from today (or yesterday)
+                                    let streak = 0;
+                                    let sd = new Date();
+                                    if (!logSet.has(dateKey(sd))) sd = addDays(sd, -1);
+                                    while (logSet.has(dateKey(sd))) { streak++; sd = addDays(sd, -1); }
+
+                                    const thName = document.createElement('th');
+                                    thName.className = 'tracker-label-name';
+                                    thName.textContent = habit.label || k;
+                                    tr.appendChild(thName);
+
+                                    const thStreak = document.createElement('th');
+                                    thStreak.className = 'tracker-label-streak';
+                                    thStreak.textContent = streak > 0 ? `${streak}d 🔥` : '';
+                                    tr.appendChild(thStreak);
+
+                                    allDays.forEach(day => {
+                                        const td = document.createElement('td');
+                                        td.dataset.date = day;
+
+                                        if (day < habitStart) td.dataset.state = 'untracked';
+                                        else if (logSet.has(day)) td.dataset.state = 'done';
+                                        else td.dataset.state = 'missed';
+
+                                        const d = new Date(day + 'T00:00:00');
+                                        td.dataset.tip = `${DAYS[d.getDay()]} ${MONTHS[d.getMonth()]} ${d.getDate()}`;
+
+                                        tr.appendChild(td);
+                                    });
+
+                                    tbody.appendChild(tr);
+                                });
+                            }
+
+                            render();
+                        })();
+                    </script>
                 </div>
             </article>
 
