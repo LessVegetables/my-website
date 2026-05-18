@@ -394,7 +394,7 @@ async function loadProjects(lang = 'en') {
 
         card.innerHTML = `
             ${tagDivs}
-            <a href="${project['github-url']}" target="_blank" class="project-card-link">
+            <a href="${project['github-url']}" target="_blank" class="project-card-link" data-umami-event="project-click" data-umami-event-project="${project.id}">
                 <div class="project-card-content">
                     <h3 class="project-title">${project.name[lang]}</h3>
                     ${primaryLabel ? `<div class="project-tag">${primaryLabel}</div>` : ''}

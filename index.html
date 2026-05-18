@@ -41,7 +41,8 @@
                     <p class="title" data-key="title">Computer Science Student</p>
                 </div>
 
-                <button class="info-more-btn" data-sidebar-btn data-key="info-more-btn">
+                <button class="info-more-btn" data-sidebar-btn data-key="info-more-btn"
+                    data-umami-event="sidebar-contacts-expand">
                     <span>Show Contacts</span>
                     <ion-icon name="chevron-down"></ion-icon>
                 </button>
@@ -52,7 +53,8 @@
 
                 <ul class="contacts-list">
                     <li class="contact-item">
-                        <a href="mailto:daniel@gehrman.me" target="_blank" data-key="email-link" data-attr="href">
+                        <a href="mailto:daniel@gehrman.me" target="_blank" data-key="email-link" data-attr="href"
+                            data-umami-event="contact-email">
                             <div class="icon-box" data-is-link="true">
                                 <ion-icon name="mail-outline"></ion-icon>
                             </div>
@@ -67,7 +69,7 @@
                     </li>
 
                     <li class="contact-item">
-                        <a href="https://t.me/danielgehrman" target="_blank">
+                        <a href="https://t.me/danielgehrman" target="_blank" data-umami-event="contact-telegram">
                             <div class="icon-box" data-is-link="true">
                                 <!-- <i class="fab fa-telegram"></i> -->
                                 <ion-icon name="phone-portrait-outline"></ion-icon>
@@ -81,7 +83,8 @@
                     </li>
 
                     <li class="contact-item">
-                        <a href="https://www.nsu.ru/n/" target="_blank" data-key="university-link" data-attr="href">
+                        <a href="https://www.nsu.ru/n/" target="_blank" data-key="university-link" data-attr="href"
+                            data-umami-event="contact-university">
                             <div class="icon-box" data-is-link="true">
                                 <ion-icon name="school-outline"></ion-icon>
                             </div>
@@ -101,7 +104,7 @@
                     </li>
 
                     <li class="contact-item">
-                        <a href="https://github.com/LessVegetables" target="_blank">
+                        <a href="https://github.com/LessVegetables" target="_blank" data-umami-event="contact-github">
                             <div class="icon-box" data-is-link="true">
                                 <ion-icon name="logo-github"></ion-icon>
                             </div>
@@ -140,21 +143,24 @@
             <nav class="navbar">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#" role="button" class="nav-button" data-nav-link data-key="home">Home</a>
+                        <a href="#" role="button" class="nav-button" data-nav-link data-key="home"
+                            data-umami-event="nav-home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" role="button" class="nav-button" data-nav-link data-key="about">About</a>
+                        <a href="#" role="button" class="nav-button" data-nav-link data-key="about"
+                            data-umami-event="nav-about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" role="button" class="nav-button" data-nav-link data-key="blog">Blog</a>
+                        <a href="#" role="button" class="nav-button" data-nav-link data-key="blog"
+                            data-umami-event="nav-blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" role="button" class="nav-button" id="lang-toggle"
-                            data-key="languageChange">Русский</a>
+                        <a href="#" role="button" class="nav-button" id="lang-toggle" data-key="languageChange"
+                            data-umami-event="lang-toggle">Русский</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" role="button" class="nav-button" id="theme-toggle"><ion-icon
-                                name="invert-mode-outline"></ion-icon></a>
+                        <a href="#" role="button" class="nav-button" id="theme-toggle"
+                            data-umami-event="theme-toggle"><ion-icon name="invert-mode-outline"></ion-icon></a>
                     </li>
                 </ul>
             </nav>
@@ -177,21 +183,33 @@
 
                         <ul class="filter-list">
                             <form>
-                                <label><input type="checkbox" name="desktop">Desktop</label>
-                                <label><input type="checkbox" name="ios">iOS</label>
-                                <label><input type="checkbox" name="tgbots">Telegram Bots</label>
+                                <label><input type="checkbox" name="desktop" data-umami-event="project-filter"
+                                        data-umami-event-filter="desktop">Desktop</label>
+                                <label><input type="checkbox" name="ios" data-umami-event="project-filter"
+                                        data-umami-event-filter="ios">iOS</label>
+                                <label><input type="checkbox" name="tgbots" data-umami-event="project-filter"
+                                        data-umami-event-filter="tgbots">Telegram Bots</label>
 
-                                <label><input type="checkbox" name="python">Python</label>
-                                <label><input type="checkbox" name="swift">Swift</label>
-                                <label><input type="checkbox" name="c">C</label>
+                                <label><input type="checkbox" name="python" data-umami-event="project-filter"
+                                        data-umami-event-filter="python">Python</label>
+                                <label><input type="checkbox" name="swift" data-umami-event="project-filter"
+                                        data-umami-event-filter="swift">Swift</label>
+                                <label><input type="checkbox" name="c" data-umami-event="project-filter"
+                                        data-umami-event-filter="c">C</label>
 
-                                <label><input type="checkbox" name="frontend">Frontend</label>
-                                <label><input type="checkbox" name="backend">Backend</label>
-                                <label><input type="checkbox" name="fullstack">Fullstack</label>
-                                <label><input type="checkbox" name="utility">Utility</label>
+                                <label><input type="checkbox" name="frontend" data-umami-event="project-filter"
+                                        data-umami-event-filter="frontend">Frontend</label>
+                                <label><input type="checkbox" name="backend" data-umami-event="project-filter"
+                                        data-umami-event-filter="backend">Backend</label>
+                                <label><input type="checkbox" name="fullstack" data-umami-event="project-filter"
+                                        data-umami-event-filter="fullstack">Fullstack</label>
+                                <label><input type="checkbox" name="utility" data-umami-event="project-filter"
+                                        data-umami-event-filter="utility">Utility</label>
 
-                                <label><input type="checkbox" name="wip">Work In Progress</label>
-                                <label><input type="checkbox" name="demo">Demo</label>
+                                <label><input type="checkbox" name="wip" data-umami-event="project-filter"
+                                        data-umami-event-filter="wip">Work In Progress</label>
+                                <label><input type="checkbox" name="demo" data-umami-event="project-filter"
+                                        data-umami-event-filter="demo">Demo</label>
                                 <!-- <label><input type="checkbox" name="done">Done</label> -->
 
                             </form>
@@ -277,7 +295,8 @@
 
                     <div class="open-resume">
                         <a href="./files/resume-en.pdf" target="_blank" rel="noopener noreferrer"
-                            class="open-resume-button" data-key="resume-button" data-href-key="resume-path"></a>
+                            class="open-resume-button" data-key="resume-button" data-href-key="resume-path"
+                            data-umami-event="resume-open"></a>
                     </div>
 
                     <section class="timeline">
