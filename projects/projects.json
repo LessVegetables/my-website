@@ -59,7 +59,10 @@
                 "backend"
             ],
             "status": "finished",
-            "github-url": "https://cardlyapp.ru",
+            "github-url": {
+                "en": "https://cardlywallet.net",
+                "ru": "https://cardlyapp.ru"
+            },
             "styles": {
                 "card": "background: conic-gradient(from 45deg, #4294F7, #EA4025, #F09837, #4294F7);",
                 "image-1": "transform: translateX(-50%), translateY(-100%), rotate(-1deg); box-shadow: none; transition: transform 0.3s ease;",

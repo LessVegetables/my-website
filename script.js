@@ -365,6 +365,14 @@ async function loadProjects(lang = 'en') {
         const primaryTag = project.tags[0];
         const primaryLabel = primaryTag && TAG_LABELS[primaryTag];
 
+        // github-url can be a plain string (same link for every language) or a
+        // localized object like { "en": "...", "ru": "..." }. When it's an
+        // object, pick the current language and fall back to 'en' if missing.
+        const rawUrl = project['github-url'];
+        const projectUrl = typeof rawUrl === 'object'
+            ? (rawUrl[lang] || rawUrl.en)
+            : rawUrl;
+
         // multiple tags:
         // project.tags
         //     .filter(tag => TAG_LABELS[tag])
@@ -394,7 +402,7 @@ async function loadProjects(lang = 'en') {
 
         card.innerHTML = `
             ${tagDivs}
-            <a href="${project['github-url']}" target="_blank" class="project-card-link" data-umami-event="project-click" data-umami-event-project="${project.id}">
+            <a href="${projectUrl}" target="_blank" class="project-card-link" data-umami-event="project-click" data-umami-event-project="${project.id}">
                 <div class="project-card-content">
                     <h3 class="project-title">${project.name[lang]}</h3>
                     ${primaryLabel ? `<div class="project-tag">${primaryLabel}</div>` : ''}

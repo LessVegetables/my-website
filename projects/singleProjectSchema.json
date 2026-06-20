@@ -14,5 +14,9 @@
     },
     "assets": [],
     "tags": [],
-    "github-url": "https://www.github.com/lessvegetables/"
+    "github-url": "https://www.github.com/lessvegetables/",
+    "_github-url-localized-example": {
+        "en": "https://www.github.com/lessvegetables/",
+        "ru": "https://www.github.com/lessvegetables/"
+    }
 }
