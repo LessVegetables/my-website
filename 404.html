@@ -11,8 +11,8 @@
         if (["ru", "en"].includes(pathLang)) {
             localStorage.setItem("lang", pathLang);
         }
-        // Redirect to the homepage
-        window.location.replace("/");
+        // Redirect to the homepage, keeping the query (UTM tags) and hash
+        window.location.replace("/" + window.location.search + window.location.hash);
     </script>
     <script defer src="https://stat.gehrman.me/script.js"
         data-website-id="1e6bcb91-1bd7-42af-a927-ceffd4687832"></script>
