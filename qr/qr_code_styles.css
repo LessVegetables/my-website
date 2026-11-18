@@ -25,7 +25,6 @@ input {
 
 img {
     border: 1px solid #ddd;
-    border-radius: 8px;
     /* the PNG can be much larger than the preview: show it at a fixed size */
     width: 256px;
     height: 256px;
