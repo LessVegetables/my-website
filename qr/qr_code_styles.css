@@ -24,7 +24,6 @@ input {
 }
 
 img {
-    border: 1px solid #ddd;
     /* the PNG can be much larger than the preview: show it at a fixed size */
     width: 256px;
     height: 256px;
@@ -157,7 +156,6 @@ img {
     }
 
     img {
-        border: 1px solid #555;
         opacity: 75%;
     }
 
