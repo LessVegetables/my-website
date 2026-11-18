@@ -17,6 +17,7 @@ const marginEl = $("optMargin");
 const darkEl = $("optDark");
 const lightEl = $("optLight");
 const transparentEl = $("optTransparent");
+const radiusEl = $("optRadius");
 const resetEl = $("optReset");
 
 const CM_PER_INCH = 2.54;
@@ -32,6 +33,7 @@ const DEFAULTS = {
     dark: "#000000",
     light: "#ffffff",
     transparent: false,
+    radius: 0, // background corner radius, % of the image side
 };
 
 let currentValue = "";
@@ -45,6 +47,7 @@ function clamp(n, min, max) {
 function readSettings() {
     const size = clamp(Math.round(Number(sizeEl.value)) || DEFAULTS.size, MIN_SIZE, MAX_SIZE);
     const margin = clamp(Math.round(Number(marginEl.value)), 0, 20);
+    const radius = clamp(Number(radiusEl.value) || 0, 0, 50);
     return {
         size,
         dpi: Number(dpiEl.value) || DEFAULTS.dpi,
@@ -53,6 +56,7 @@ function readSettings() {
         dark: darkEl.value,
         light: lightEl.value,
         transparent: transparentEl.checked,
+        radius,
     };
 }
 
@@ -64,8 +68,9 @@ function applySettings(s) {
     darkEl.value = s.dark;
     lightEl.value = s.light;
     transparentEl.checked = s.transparent;
+    radiusEl.value = s.radius;
     syncCmFromPx();
-    lightEl.disabled = s.transparent;
+    updateDisabled();
 }
 
 function loadSettings() {
@@ -97,6 +102,17 @@ function syncPxFromCm() {
     }
 }
 
+function updateDisabled() {
+    lightEl.disabled = transparentEl.checked;
+    radiusEl.disabled = transparentEl.checked;
+}
+
+// With rounded corners the library draws a transparent background and we
+// paint the rounded one ourselves underneath.
+function hasRoundedBg(s) {
+    return !s.transparent && s.radius > 0;
+}
+
 function qrOptions(s) {
     return {
         width: s.size,
@@ -105,9 +121,41 @@ function qrOptions(s) {
         color: {
             dark: s.dark,
             // qrcode accepts #rrggbbaa; "00" alpha = fully transparent
-            light: s.transparent ? "#ffffff00" : s.light,
+            light: s.transparent || hasRoundedBg(s) ? "#ffffff00" : s.light,
         },
     };
+}
+
+async function makePng(value, s) {
+    if (!hasRoundedBg(s)) return QRCode.toDataURL(value, qrOptions(s));
+
+    const qr = document.createElement("canvas");
+    await QRCode.toCanvas(qr, value, qrOptions(s));
+
+    const out = document.createElement("canvas");
+    out.width = qr.width;
+    out.height = qr.height;
+    const ctx = out.getContext("2d");
+    ctx.fillStyle = s.light;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, out.width, out.height, out.width * s.radius / 100);
+    ctx.fill();
+    ctx.drawImage(qr, 0, 0);
+    return out.toDataURL("image/png");
+}
+
+async function makeSvg(value, s) {
+    const opts = qrOptions(s);
+    delete opts.width; // SVG is vector: it scales to any size without losing sharpness
+    let svg = await QRCode.toString(value, { ...opts, type: "svg" });
+
+    if (hasRoundedBg(s)) {
+        const side = Number(svg.match(/viewBox="0 0 (\d+) \d+"/)[1]);
+        const rx = +(side * s.radius / 100).toFixed(3);
+        svg = svg.replace(/(<svg[^>]*>)/,
+            `$1<rect width="${side}" height="${side}" rx="${rx}" fill="${s.light}"/>`);
+    }
+    return svg;
 }
 
 // ---------- rendering ----------
@@ -121,7 +169,7 @@ async function render() {
 
     const s = readSettings();
     const id = ++renderId;
-    const url = await QRCode.toDataURL(value, qrOptions(s));
+    const url = await makePng(value, s);
     // drop stale results if the user kept typing while a big image rendered
     if (id === renderId) img.src = url;
 }
@@ -132,7 +180,7 @@ function scheduleRender() {
 }
 
 function onSettingsChange() {
-    lightEl.disabled = transparentEl.checked;
+    updateDisabled();
     saveSettings(readSettings());
     scheduleRender();
 }
@@ -150,15 +198,13 @@ function download(url, filename) {
 
 savePNG.addEventListener("click", async () => {
     const s = readSettings();
-    const url = await QRCode.toDataURL(currentValue || " ", qrOptions(s));
+    const url = await makePng(currentValue || " ", s);
     download(url, `qr-code-${s.size}px.png`);
 });
 
 saveSVG.addEventListener("click", async () => {
     const s = readSettings();
-    const opts = qrOptions(s);
-    delete opts.width; // SVG is vector: it scales to any size without losing sharpness
-    const svg = await QRCode.toString(currentValue || " ", { ...opts, type: "svg" });
+    const svg = await makeSvg(currentValue || " ", s);
 
     const blob = new Blob([svg], { type: "image/svg+xml" });
     const url = URL.createObjectURL(blob);
@@ -176,7 +222,7 @@ dpiEl.addEventListener("change", () => { syncPxFromCm(); onSettingsChange(); });
 sizeEl.addEventListener("change", () => { sizeEl.value = readSettings().size; syncCmFromPx(); });
 marginEl.addEventListener("change", () => { marginEl.value = readSettings().margin; });
 
-[eccEl, marginEl, darkEl, lightEl, transparentEl].forEach((el) =>
+[eccEl, marginEl, darkEl, lightEl, transparentEl, radiusEl].forEach((el) =>
     el.addEventListener("input", onSettingsChange)
 );
 

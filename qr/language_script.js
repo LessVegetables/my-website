@@ -34,6 +34,7 @@ const localTranslations = {
     optMargin: { en: "Margin (modules)", ru: "Отступ (в модулях)" },
     optDark: { en: "Foreground", ru: "Цвет кода" },
     optLight: { en: "Background", ru: "Цвет фона" },
+    optRadius: { en: "Corner radius (%)", ru: "Скругление углов (%)" },
     optTransparent: { en: "Transparent background", ru: "Прозрачный фон" },
     advancedHint: {
         en: "For print, SVG is best: it's vector, so it stays sharp at any size. For PNG, pick the print size and DPI and the pixel size is worked out for you.",
