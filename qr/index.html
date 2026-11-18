@@ -20,13 +20,66 @@
     <div class="wrap">
         <input id="text" data-key="placeholder" data-attr="placeholder"
             placeholder="Type the thing to turn into a QR code here" autocomplete="off" />
-        <img id="qrImg" alt="QR code" width="256" height="256" />
+        <img id="qrImg" alt="QR code" />
         <p class="hint" data-key="hint">Right-click / long-press to save. Or:</p>
 
         <div class="buttons">
             <button id="savePNG" data-key="savePNG">Save as Photo (PNG)</button>
             <button id="saveSVG" data-key="saveSVG">Save as SVG</button>
         </div>
+
+        <details class="advanced">
+            <summary data-key="advanced">Advanced settings</summary>
+
+            <div class="options">
+                <label>
+                    <span data-key="optSize">PNG size (px)</span>
+                    <input id="optSize" type="number" min="64" max="8192" step="1" inputmode="numeric" />
+                </label>
+                <label>
+                    <span data-key="optCm">Print size (cm)</span>
+                    <input id="optCm" type="number" min="0.5" step="0.1" inputmode="decimal" />
+                </label>
+                <label>
+                    <span data-key="optDpi">Print quality (DPI)</span>
+                    <select id="optDpi">
+                        <option value="72">72</option>
+                        <option value="150">150</option>
+                        <option value="300">300</option>
+                        <option value="600">600</option>
+                    </select>
+                </label>
+                <label>
+                    <span data-key="optEcc">Error correction</span>
+                    <select id="optEcc">
+                        <option value="L" data-key="eccL">Low (7%)</option>
+                        <option value="M" data-key="eccM">Medium (15%)</option>
+                        <option value="Q" data-key="eccQ">Quartile (25%)</option>
+                        <option value="H" data-key="eccH">High (30%)</option>
+                    </select>
+                </label>
+                <label>
+                    <span data-key="optMargin">Margin (modules)</span>
+                    <input id="optMargin" type="number" min="0" max="20" step="1" inputmode="numeric" />
+                </label>
+                <label>
+                    <span data-key="optDark">Foreground</span>
+                    <input id="optDark" type="color" />
+                </label>
+                <label>
+                    <span data-key="optLight">Background</span>
+                    <input id="optLight" type="color" />
+                </label>
+                <label class="check">
+                    <input id="optTransparent" type="checkbox" />
+                    <span data-key="optTransparent">Transparent background</span>
+                </label>
+            </div>
+
+            <p class="hint" data-key="advancedHint">For print, SVG is best: it's vector, so it stays sharp at any size.
+                For PNG, pick the print size and DPI and the pixel size is worked out for you.</p>
+            <button id="optReset" type="button" class="reset" data-key="optReset">Reset to defaults</button>
+        </details>
     </div>
 </body>
 

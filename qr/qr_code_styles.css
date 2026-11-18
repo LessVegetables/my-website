@@ -26,6 +26,10 @@ input {
 img {
     border: 1px solid #ddd;
     border-radius: 8px;
+    /* the PNG can be much larger than the preview: show it at a fixed size */
+    width: 256px;
+    height: 256px;
+    image-rendering: pixelated;
 }
 
 .hint {
@@ -64,6 +68,73 @@ img {
     background-color: hsl(211, 100%, 35%);
 }
 
+/* advanced settings */
+.advanced {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.advanced summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 14px 0 10px;
+}
+
+.options label {
+    display: grid;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.options label.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.options input,
+.options select {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-family: inherit;
+}
+
+.options input[type="color"] {
+    height: 38px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    width: auto;
+}
+
+.options input:disabled {
+    opacity: 40%;
+    cursor: not-allowed;
+}
+
+.reset {
+    margin-top: 10px;
+    background: none;
+    border: 1px solid #bbb;
+    border-radius: 25px;
+    padding: 6px 14px;
+    font-size: 14px;
+    color: inherit;
+    cursor: pointer;
+}
+
 @media (max-width: 480px) {
     .buttons button {
         width: 100%;
@@ -89,6 +160,21 @@ img {
     img {
         border: 1px solid #555;
         opacity: 75%;
+    }
+
+    .advanced {
+        border-color: #555;
+    }
+
+    .options input,
+    .options select {
+        background: #222222;
+        border-color: #555;
+        color: #f5f5f5;
+    }
+
+    .reset {
+        border-color: #555;
     }
 
 }
